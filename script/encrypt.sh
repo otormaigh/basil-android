@@ -27,6 +27,7 @@ checkEnv PENNY_ENCRYPT_KEY
 echo "Encrypting files"
 openssl aes-256-cbc -a -in signing/release.keystore -out signing/release.keystore.aes -k $PENNY_ENCRYPT_KEY
 openssl aes-256-cbc -a -in signing/play.json -out signing/play.json.aes -k $PENNY_ENCRYPT_KEY
+openssl aes-256-cbc -a -in app/src/main/res/values/font_certs.xml -out app/src/main/res/values/font_certs.xml.aes -k $PENNY_ENCRYPT_KEY
 log "Files encrypted"
 
 echo "Finishing up"
