@@ -68,6 +68,7 @@ spoon {
 dependencies {
   implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$Deps.kotlin"
   implementation "com.android.support:appcompat-v7:$Deps.support"
+  implementation "com.android.support:design:$Deps.support"
   implementation 'com.android.support.constraint:constraint-layout:1.1.0'
 
   testImplementation 'junit:junit:4.12'

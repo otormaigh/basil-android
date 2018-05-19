@@ -7,6 +7,7 @@
   <color name="primary_800">#356859</color>
   <color name="primary_500">#37966F</color>
   <color name="primary_100">#B9E4C9</color>
-
   <color name="secondary_800">#FD5523</color>
+
+  <color name="bg_recipe_detail">#F2FFFBE6</color>
 </resources>
