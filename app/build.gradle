@@ -1,0 +1,78 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: "com.jaredsburrows.spoon"
+apply plugin: 'com.github.triplet.play'
+
+android {
+  playAccountConfigs {
+    release {
+      jsonFile = file(Keystore.playJson)
+    }
+  }
+
+  compileSdkVersion 27
+  defaultConfig {
+    applicationId "ie.pennylabs.x.basil"
+    minSdkVersion 21
+    targetSdkVersion 27
+    versionCode 1
+    versionName "1.0"
+    testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    archivesBaseName = "basil-$versionName"
+
+    playAccountConfig = playAccountConfigs.release
+  }
+
+  signingConfigs {
+    release {
+      storeFile file(Keystore.releaseStore)
+      storePassword Keystore.getStorePassword(project)
+      keyAlias Keystore.getKeyAlias(project)
+      keyPassword Keystore.getKeyPassword(project)
+    }
+
+    debug {
+      storeFile file(Keystore.debugStore)
+    }
+  }
+
+  buildTypes {
+    debug {
+      signingConfig signingConfigs.debug
+      applicationIdSuffix '.debug'
+    }
+
+    release {
+      signingConfig signingConfigs.release
+      postprocessing {
+        proguardFiles 'proguard-rules.pro'
+        removeUnusedResources = true
+        removeUnusedCode = true
+        optimizeCode = true
+        obfuscate = true
+      }
+    }
+  }
+}
+
+play {
+  track = 'internal'
+  untrackOld = true
+}
+
+spoon {
+  baseOutputDir = "$project.buildDir/reports/spoon"
+}
+
+dependencies {
+  implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$Deps.kotlin"
+  implementation "com.android.support:appcompat-v7:$Deps.support"
+  implementation 'com.android.support.constraint:constraint-layout:1.1.0'
+
+  testImplementation 'junit:junit:4.12'
+  androidTestImplementation "com.android.support.test:rules:$Deps.support_test"
+  androidTestImplementation "com.android.support.test:runner:$Deps.support_test"
+  androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+  androidTestImplementation "com.squareup.spoon:spoon-client:2.0.0-SNAPSHOT"
+}

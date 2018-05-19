@@ -1,0 +1,33 @@
+buildscript {
+  repositories {
+    google()
+    jcenter()
+
+    maven { url "https://oss.jfrog.org/artifactory/oss-snapshot-local/" }
+    maven { url "https://oss.sonatype.org/content/repositories/snapshots" }
+  }
+  dependencies {
+    classpath 'com.android.tools.build:gradle:3.2.0-alpha15'
+    classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$Deps.kotlin"
+    classpath "com.jaredsburrows:gradle-spoon-plugin:1.4.1-SNAPSHOT"
+    classpath 'com.github.triplet.gradle:play-publisher:1.2.1-beta1'
+  }
+}
+
+allprojects {
+  repositories {
+    google()
+    jcenter()
+
+    maven { url "https://oss.sonatype.org/content/repositories/snapshots" }
+  }
+}
+
+task clean(type: Delete) {
+  delete rootProject.buildDir
+}
+
+task wrapper(type: Wrapper) {
+  gradleVersion = "4.7"
+  distributionType = "all"
+}
