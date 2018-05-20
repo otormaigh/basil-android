@@ -14,7 +14,7 @@ class RecipePage(context: Context, recipe: Recipe) : FrameLayout(context) {
   init {
     LayoutInflater.from(context).inflate(R.layout.page_recipe, this, true)
 
-    ivOpenRecipe.setOnClickListener { RecipeMainActivity.start(context) }
+    ivOpenRecipe.setOnClickListener { RecipeMainActivity.start(context, recipe.id) }
     tvRecipeName.text = recipe.name
   }
 }
