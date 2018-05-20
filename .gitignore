@@ -16,4 +16,3 @@ build
 
 signing/release.keystore
 signing/play.json
-app/src/main/res/values/font_certs.xml

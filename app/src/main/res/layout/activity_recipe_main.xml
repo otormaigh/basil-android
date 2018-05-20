@@ -163,6 +163,7 @@
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:layout_marginTop="@dimen/vertical_margin_tri"
+      android:layout_marginBottom="@dimen/vertical_margin_tri"
       android:layout_marginEnd="@dimen/horizontal_margin"
       android:drawableStart="@drawable/ic_block"
       android:drawablePadding="@dimen/horizontal_margin"

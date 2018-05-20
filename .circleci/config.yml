@@ -60,7 +60,6 @@ jobs:
               rm -f buildSrc/src/main/java/KeyStore.kt
               rm -f signing/release.keystore
               rm -f signing/play.json
-              rm -f app/src/main/res/values/font_certs.xml
 
 workflows:
   version: 2
