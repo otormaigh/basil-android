@@ -34,14 +34,11 @@
 
     <TextView
       android:id="@+id/tvTitle"
+      style="@style/Title.Recipe"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:layout_marginTop="@dimen/vertical_margin_double"
-      android:fontFamily="@font/montserrat_semibold"
       android:text="Creamy Pesto Pasta"
-      android:textAlignment="center"
-      android:textAppearance="@style/TextAppearance.AppCompat.Display3"
-      android:textColor="@color/secondary_500"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toTopOf="parent" />
