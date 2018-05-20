@@ -80,12 +80,15 @@ dependencies {
   implementation 'com.google.android.material:material:1.0.0-alpha1'
   implementation 'com.android.support.constraint:constraint-layout:1.1.0'
 
+  implementation 'com.jakewharton.timber:timber:4.7.0'
+
   testImplementation 'junit:junit:4.12'
   androidTestImplementation "com.android.support.test:rules:$Deps.support_test"
   androidTestImplementation "com.android.support.test:runner:$Deps.support_test"
   androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
   androidTestImplementation "com.squareup.spoon:spoon-client:2.0.0-SNAPSHOT"
 }
+
 
 androidExtensions {
   experimental = true

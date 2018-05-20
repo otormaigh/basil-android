@@ -1,6 +1,5 @@
 package ie.pennylabs.x.basil.feature.recipe.detail.ingredients
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -22,7 +21,6 @@ class IngredientsRecyclerAdapter : ListAdapter<Ingredient, IngredientsRecyclerAd
 
   inner class ViewHolder(override val containerView: View) : RecyclerView.ViewHolder(containerView), LayoutContainer {
     fun bind(ingredient: Ingredient) {
-      Log.e("MY_LOG", "BIND")
       tvName.text = ingredient.name
       tvQuantity.text = ingredient.quantity
     }
