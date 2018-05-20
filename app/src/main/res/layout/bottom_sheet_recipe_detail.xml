@@ -2,42 +2,27 @@
 <merge xmlns:android="http://schemas.android.com/apk/res/android"
   xmlns:app="http://schemas.android.com/apk/res-auto"
   xmlns:tools="http://schemas.android.com/tools"
-  android:layout_width="match_parent"
-  android:layout_height="match_parent"
   tools:parentTag="android.support.constraint.ConstraintLayout">
+
+  <androidx.viewpager.widget.ViewPager
+    android:id="@+id/pager"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.google.android.material.tabs.TabLayout
+      android:id="@+id/pagerTabs"
+      android:layout_width="match_parent"
+      android:layout_height="@dimen/tab_height"
+      android:background="@null"
+      app:tabIndicatorColor="@color/primary_500"
+      app:tabTextColor="@color/primary_500" />
+  </androidx.viewpager.widget.ViewPager>
 
   <View
     android:layout_width="0dp"
     android:layout_height="1dp"
-    android:background="@color/primary_500"
+    android:background="@color/primary_100"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="parent" />
-
-  <TextView
-    android:id="@+id/tvIngredients"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_marginTop="@dimen/vertical_margin"
-    android:paddingBottom="@dimen/vertical_margin"
-    android:text="Ingredients"
-    android:textAllCaps="true"
-    android:textAppearance="@style/TextAppearance.AppCompat.Title"
-    app:layout_constraintEnd_toStartOf="@id/tvDirections"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent" />
-
-  <TextView
-    android:id="@+id/tvDirections"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_marginTop="@dimen/vertical_margin"
-    android:paddingBottom="@dimen/vertical_margin"
-    android:text="Directions"
-    android:textAllCaps="true"
-    android:textAppearance="@style/TextAppearance.AppCompat.Title"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toEndOf="@id/tvIngredients"
-    app:layout_constraintTop_toTopOf="parent" />
-
 </merge>

@@ -86,3 +86,7 @@ dependencies {
   androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
   androidTestImplementation "com.squareup.spoon:spoon-client:2.0.0-SNAPSHOT"
 }
+
+androidExtensions {
+  experimental = true
+}
