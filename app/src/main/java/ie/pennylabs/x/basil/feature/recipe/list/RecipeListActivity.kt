@@ -1,4 +1,4 @@
-package ie.pennylabs.x.basil.feature.recipe
+package ie.pennylabs.x.basil.feature.recipe.list
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -10,6 +10,6 @@ class RecipeListActivity : AppCompatActivity() {
     super.onCreate(savedInstanceState)
     setContentView(R.layout.activity_recipe_list)
 
-    ivOpenRecipe.setOnClickListener { RecipeMainActivity.start(this) }
+    pagerRecipe.adapter = RecipePagerAdapter()
   }
 }
