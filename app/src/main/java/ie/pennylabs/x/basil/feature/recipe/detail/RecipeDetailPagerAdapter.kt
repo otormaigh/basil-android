@@ -3,6 +3,7 @@ package ie.pennylabs.x.basil.feature.recipe.detail
 import android.view.View
 import android.view.ViewGroup
 import androidx.viewpager.widget.PagerAdapter
+import ie.pennylabs.x.basil.feature.recipe.detail.directions.DirectionsPage
 import ie.pennylabs.x.basil.feature.recipe.detail.ingredients.IngredientsPage
 
 class RecipePagerAdapter : PagerAdapter() {
@@ -17,7 +18,7 @@ class RecipePagerAdapter : PagerAdapter() {
   override fun instantiateItem(container: ViewGroup, position: Int): Any {
     val view = when (position) {
       0 -> IngredientsPage(container.context)
-      1 -> IngredientsPage(container.context)
+      1 -> DirectionsPage(container.context)
       else -> throw IndexOutOfBoundsException()
     }
     container.addView(view)
