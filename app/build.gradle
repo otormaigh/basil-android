@@ -77,10 +77,14 @@ spoon {
 
 dependencies {
   implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$Deps.kotlin"
+  implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Deps.coroutines}"
+  implementation "org.jetbrains.kotlinx:kotlinx-coroutines-reactive:${Deps.coroutines}"
+
   implementation 'com.google.android.material:material:1.0.0-alpha1'
   implementation 'com.android.support.constraint:constraint-layout:1.1.0'
 
   implementation 'com.jakewharton.timber:timber:4.7.0'
+  implementation 'com.squareup.moshi:moshi-kotlin:1.6.0'
 
   testImplementation 'junit:junit:4.12'
   androidTestImplementation "com.android.support.test:rules:$Deps.support_test"
@@ -89,7 +93,11 @@ dependencies {
   androidTestImplementation "com.squareup.spoon:spoon-client:2.0.0-SNAPSHOT"
 }
 
-
+kotlin {
+  experimental {
+    coroutines 'enable'
+  }
+}
 androidExtensions {
   experimental = true
 }
