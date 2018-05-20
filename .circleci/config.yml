@@ -1,0 +1,52 @@
+version: 2.0
+
+cache_key: &cache_key
+  key: jars-{{ checksum "gradle/wrapper/gradle-wrapper.properties" }}-{{ checksum "buildSrc/src/main/java/Deps.kt" }}-{{ checksum "build.gradle" }}-{{ checksum "app/build.gradle" }}
+
+jobs:
+  build:
+    working_directory: ~/basil
+
+    docker:
+      - image: circleci/android:api-27-alpha
+
+    environment:
+      TERM: dumb
+
+    steps:
+      - checkout
+
+      - restore_cache:
+          <<: *cache_key
+
+      - run:
+          name: Assemble and bundle
+          command: ./gradlew assemble bundle --profile
+      - store_artifacts:
+          path: app/build/outputs/
+      - store_artifacts:
+          path: build/reports/profile/
+
+      - run:
+          name: Android Lint
+          command: ./gradlew lint
+      - store_artifacts:
+          path: app/build/reports/lint-results.html
+
+      - save_cache:
+          <<: *cache_key
+          paths:
+            - ~/.gradle/caches
+            - ~/.gradle/wrapper
+
+workflows:
+  version: 2
+  build_and_lint:
+    jobs:
+      - build
+
+deployment:
+ play:
+   branch: master
+   commands:
+     - sh create-release.sh

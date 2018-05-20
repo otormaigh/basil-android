@@ -5,9 +5,11 @@ apply plugin: "com.jaredsburrows.spoon"
 apply plugin: 'com.github.triplet.play'
 
 android {
-  playAccountConfigs {
-    release {
-      jsonFile = file(Keystore.playJson)
+  if (file('../signing/play.json').exists()) {
+    playAccountConfigs {
+      release {
+        jsonFile = file('../signing/play.json')
+      }
     }
   }
 
@@ -21,19 +23,23 @@ android {
     testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     archivesBaseName = "basil-$versionName"
 
-    playAccountConfig = playAccountConfigs.release
+    if (file('../signing/play.json').exists()) {
+      playAccountConfig = playAccountConfigs.release
+    }
   }
 
   signingConfigs {
-    release {
-      storeFile file(Keystore.releaseStore)
-      storePassword Keystore.getStorePassword(project)
-      keyAlias Keystore.getKeyAlias(project)
-      keyPassword Keystore.getKeyPassword(project)
+    if (file('../signing/release.keystore').exists()) {
+      release {
+        storeFile file(Keystore.releaseStore)
+        storePassword Keystore.storePassword
+        keyAlias Keystore.keyAlias
+        keyPassword Keystore.keyPassword
+      }
     }
 
     debug {
-      storeFile file(Keystore.debugStore)
+      storeFile file('../signing/debug.keystore')
     }
   }
 
@@ -44,7 +50,11 @@ android {
     }
 
     release {
-      signingConfig signingConfigs.release
+      if (file('../signing/release.keystore').exists()) {
+        signingConfig signingConfigs.release
+      } else {
+        signingConfig signingConfigs.debug
+      }
       postprocessing {
         proguardFiles 'proguard-rules.pro'
         removeUnusedResources = true
