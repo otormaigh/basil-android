@@ -191,11 +191,11 @@
 
   </android.support.constraint.ConstraintLayout>
 
-  <ie.pennylabs.x.basil.feature.recipe.RecipeDetailBottomSheet
+  <ie.pennylabs.x.basil.feature.recipe.detail.RecipeDetailBottomSheet
     android:id="@+id/bsRecipeDetail"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bg_recipe_detail"
-    app:behavior_peekHeight="@dimen/vertical_margin_quad"
+    app:behavior_peekHeight="@dimen/tab_height"
     app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior" />
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -9,4 +9,6 @@
   <dimen name="horizontal_margin">16dp</dimen>
   <dimen name="horizontal_margin_double">32dp</dimen>
   <dimen name="horizontal_margin_tri">48dp</dimen>
+
+  <dimen name="tab_height">64dp</dimen>
 </resources>
