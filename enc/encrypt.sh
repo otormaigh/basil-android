@@ -25,6 +25,7 @@ function checkEnv {
 checkEnv PENNY_ENCRYPT_KEY
 
 echo "Encrypting files"
+openssl aes-256-cbc -a -in buildSrc/src/main/java/KeyStore.kt -out enc/KeyStore.kt.aes -k $PENNY_ENCRYPT_KEY
 openssl aes-256-cbc -a -in signing/release.keystore -out enc/release.keystore.aes -k $PENNY_ENCRYPT_KEY
 openssl aes-256-cbc -a -in signing/play.json -out enc/play.json.aes -k $PENNY_ENCRYPT_KEY
 openssl aes-256-cbc -a -in app/src/main/res/values/font_certs.xml -out enc/font_certs.xml.aes -k $PENNY_ENCRYPT_KEY
