@@ -4,7 +4,7 @@ cache_key: &cache_key
   key: jars-{{ checksum "gradle/wrapper/gradle-wrapper.properties" }}-{{ checksum "buildSrc/src/main/java/Deps.kt" }}-{{ checksum "build.gradle" }}-{{ checksum "app/build.gradle" }}
 
 jobs:
-  build:
+  build_check:
     working_directory: ~/basil
 
     docker:
@@ -38,15 +38,21 @@ jobs:
           paths:
             - ~/.gradle/caches
             - ~/.gradle/wrapper
+  deploy_play:
+    steps:
+      - run:
+        name: Create release
+        comman: sh create-release.sh
+
 
 workflows:
   version: 2
-  build_and_lint:
+  build_deploy:
     jobs:
-      - build
-
-deployment:
- play:
-   branch: master
-   commands:
-     - sh create-release.sh
+      - build_check
+      - deploy_play:
+        requires:
+          - build_check
+        filters:
+          branches:
+            only: master
