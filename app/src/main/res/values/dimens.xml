@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <dimen name="vertical_margin_half">8dp</dimen>
+  <dimen name="vertical_margin">16dp</dimen>
+  <dimen name="vertical_margin_double">32dp</dimen>
+  <dimen name="vertical_margin_tri">48dp</dimen>
+  <dimen name="vertical_margin_quad">64dp</dimen>
+
+  <dimen name="horizontal_margin">16dp</dimen>
+  <dimen name="horizontal_margin_double">32dp</dimen>
+  <dimen name="horizontal_margin_tri">48dp</dimen>
+</resources>

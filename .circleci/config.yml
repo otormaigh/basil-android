@@ -50,7 +50,7 @@ jobs:
 
       - run:
           name: Decrypt files
-          command: bash script/decrypt.sh
+          command: bash enc/decrypt.sh
       - run:
           name: Publish APK
           command: ./gradlew publishApkRelease

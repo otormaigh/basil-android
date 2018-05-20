@@ -24,10 +24,10 @@ checkEnv() {
 
 checkEnv PENNY_ENCRYPT_KEY
 
-echo "Encrypting files"
-openssl aes-256-cbc -a -in buildSrc/src/main/java/KeyStore.kt -out buildSrc/src/main/java/KeyStore.kt.aes -k $PENNY_ENCRYPT_KEY
-openssl aes-256-cbc -a -in signing/release.keystore -out signing/release.keystore.aes -k $PENNY_ENCRYPT_KEY
-openssl aes-256-cbc -a -in signing/play.json -out signing/play.json.aes -k $PENNY_ENCRYPT_KEY
-log "Files encrypted"
+echo "Decrypting files"
+openssl aes-256-cbc -a -d -in enc/KeyStore.kt.aes -out buildSrc/src/main/java/KeyStore.kt -k $PENNY_ENCRYPT_KEY
+openssl aes-256-cbc -a -d -in enc/release.keystore.aes -out signing/release.keystore -k $PENNY_ENCRYPT_KEY
+openssl aes-256-cbc -a -d -in enc/play.json.aes -out signing/play.json -k $PENNY_ENCRYPT_KEY
+log "Files decrypted"
 
 echo "Finishing up"
