@@ -1,7 +1,6 @@
 package ie.pennylabs.x.basil.feature.recipe.detail.ingredients
 
 import android.content.Context
-import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import ie.pennylabs.x.basil.data.model.Ingredient
@@ -13,7 +12,5 @@ class IngredientsPage(context: Context) : RecyclerView(context) {
     adapter = IngredientsRecyclerAdapter().apply {
       submitList(Collections.nCopies(42, Ingredient("1", "Basil", "6 tbsp")))
     }
-
-    Log.e("MY_LOG", "size = ${adapter?.itemCount}")
   }
 }
