@@ -1,8 +1,9 @@
 package ie.pennylabs.x.basil.feature.recipe
 
+import android.app.Activity
 import android.os.Bundle
-import android.support.design.widget.BottomSheetBehavior
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
+import com.google.android.material.bottomsheet.BottomSheetBehavior
 import ie.pennylabs.x.basil.R
 import kotlinx.android.synthetic.main.activity_recipe_main.*
 
