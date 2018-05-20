@@ -1,9 +1,9 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
 set -e
 
 # Echoes extra logging info
-function log {
+log() {
   if [ "$VERBOSE" = true ]
     then
       echo "--${1}"
@@ -11,7 +11,7 @@ function log {
 }
 
 # Checks if an env value is present and not empty
-function checkEnv {
+checkEnv() {
   echo "Checking"
   env_value=$(printf '%s\n' "${!1}")
   if [ -z ${env_value} ]; then
