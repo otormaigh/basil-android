@@ -1,6 +1,7 @@
 package ie.pennylabs.x.basil.feature.recipe
 
-import android.app.Activity
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.bottomsheet.BottomSheetBehavior
@@ -13,5 +14,11 @@ class RecipeMainActivity : AppCompatActivity() {
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     setContentView(R.layout.activity_recipe_main)
+  }
+
+  companion object {
+    fun start(context: Context) {
+      context.startActivity(Intent(context, RecipeMainActivity::class.java))
+    }
   }
 }
