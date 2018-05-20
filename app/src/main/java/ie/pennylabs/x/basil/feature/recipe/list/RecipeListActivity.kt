@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import ie.pennylabs.x.basil.R
 import ie.pennylabs.x.basil.data.store.RecipeStore
+import ie.pennylabs.x.basil.feature.recipe.RecipeMainActivity
 import kotlinx.android.synthetic.main.activity_recipe_list.*
 import kotlinx.coroutines.experimental.android.UI
 import kotlinx.coroutines.experimental.launch
@@ -20,6 +21,9 @@ class RecipeListActivity : AppCompatActivity() {
       val recipes = store.fetchAll()
       withContext(UI) {
         pagerRecipe.adapter = RecipePagerAdapter(recipes)
+        ivOpenRecipe.setOnClickListener {
+          RecipeMainActivity.start(this@RecipeListActivity, recipes[pagerRecipe.currentItem].id)
+        }
       }
     }
   }
