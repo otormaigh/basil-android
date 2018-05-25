@@ -66,3 +66,9 @@ workflows:
   build_deploy:
     jobs:
       - build_check
+      - deploy_play:
+         requires:
+           - build_check
+         filters:
+           branches:
+             only: master
