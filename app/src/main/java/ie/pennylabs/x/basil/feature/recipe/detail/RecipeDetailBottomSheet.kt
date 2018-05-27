@@ -12,6 +12,11 @@ import kotlinx.android.synthetic.main.bottom_sheet_recipe_detail.view.*
 
 class RecipeDetailBottomSheet : ConstraintLayout {
   val bottomSheet: BottomSheetBehavior<RecipeDetailBottomSheet> by lazy { BottomSheetBehavior.from(this) }
+  var recipeId: String = ""
+    set(value) {
+      pager.adapter = RecipePagerAdapter(value)
+      bottomSheet.state = BottomSheetBehavior.STATE_COLLAPSED
+    }
 
   constructor(context: Context) : super(context)
   constructor(context: Context, attrs: AttributeSet) : super(context, attrs)
@@ -22,7 +27,7 @@ class RecipeDetailBottomSheet : ConstraintLayout {
 
     pager.apply {
       pagerTabs.setupWithViewPager(this)
-      adapter = RecipePagerAdapter()
+      adapter = RecipePagerAdapter(recipeId)
     }
 
     pagerTabs.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {

@@ -2,9 +2,7 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
   xmlns:app="http://schemas.android.com/apk/res-auto"
   android:layout_width="match_parent"
-  android:layout_height="match_parent"
-  android:layout_marginStart="@dimen/horizontal_margin"
-  android:layout_marginEnd="@dimen/horizontal_margin">
+  android:layout_height="match_parent">
 
   <TextView
     android:id="@+id/tvAppName"
@@ -13,33 +11,17 @@
     android:fontFamily="@font/montserrat_semibold"
     android:text="@string/app_name"
     android:textAppearance="@style/TextAppearance.MaterialComponents.Headline2"
-    app:layout_constraintBottom_toTopOf="@id/ivImage"
+    app:layout_constraintBottom_toTopOf="@id/pagerRecipe"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent"
-    app:layout_constraintVertical_bias="0"
-    app:layout_constraintVertical_chainStyle="packed" />
+    app:layout_constraintTop_toTopOf="parent" />
 
-  <ImageView
-    android:id="@+id/ivImage"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:src="@drawable/img_pesto_spaghetti"
-    app:layout_constraintBottom_toTopOf="@id/tvRecipeName"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@id/tvAppName" />
-
-  <TextView
-    android:id="@+id/tvRecipeName"
-    style="@style/Title.Recipe"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="Creamy Pesto Pasta"
+  <androidx.viewpager.widget.ViewPager
+    android:id="@+id/pagerRecipe"
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
     app:layout_constraintBottom_toTopOf="@id/ivOpenRecipe"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@id/ivImage" />
+    app:layout_constraintTop_toBottomOf="@id/tvAppName" />
 
   <ImageView
     android:id="@+id/ivOpenRecipe"
@@ -49,5 +31,4 @@
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
     app:srcCompat="@drawable/ic_down_arrow" />
-
 </android.support.constraint.ConstraintLayout>

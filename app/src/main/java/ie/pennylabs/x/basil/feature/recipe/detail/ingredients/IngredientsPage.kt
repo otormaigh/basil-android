@@ -1,16 +1,19 @@
 package ie.pennylabs.x.basil.feature.recipe.detail.ingredients
 
+import android.annotation.SuppressLint
 import android.content.Context
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import ie.pennylabs.x.basil.data.model.Ingredient
-import java.util.*
+import ie.pennylabs.x.basil.data.store.IngredientStore
 
-class IngredientsPage(context: Context) : RecyclerView(context) {
+@SuppressLint("ViewConstructor")
+class IngredientsPage(context: Context, recipeId: String) : RecyclerView(context) {
+  private val store by lazy { IngredientStore() }
+
   init {
     layoutManager = LinearLayoutManager(context)
     adapter = IngredientsRecyclerAdapter().apply {
-      submitList(Collections.nCopies(42, Ingredient("1", "Basil", "6 tbsp")))
+      submitList(store.fetchForRecipe(recipeId))
     }
   }
 }
