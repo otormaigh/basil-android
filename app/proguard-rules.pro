@@ -1,4 +1,4 @@
-# https://github.com/square/moshi
+# https://github.com/square/moshi/
 -keepclassmembers class kotlin.Metadata {
     public <methods>;
 }
@@ -8,3 +8,6 @@
     @com.squareup.moshi.* <methods>;
 }
 -keep @com.squareup.moshi.JsonQualifier interface *
+
+# https://github.com/google/dagger/
+-dontwarn com.google.errorprone.annotations.**

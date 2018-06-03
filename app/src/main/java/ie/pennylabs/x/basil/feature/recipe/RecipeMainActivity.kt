@@ -3,26 +3,32 @@ package ie.pennylabs.x.basil.feature.recipe
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.bottomsheet.BottomSheetBehavior
+import dagger.android.AndroidInjection
 import ie.pennylabs.x.basil.R
+import ie.pennylabs.x.basil.arch.BaseActivity
 import ie.pennylabs.x.basil.data.store.RecipeStore
 import kotlinx.android.synthetic.main.activity_recipe_main.*
 import kotlinx.coroutines.experimental.android.UI
 import kotlinx.coroutines.experimental.launch
 import kotlinx.coroutines.experimental.withContext
+import javax.inject.Inject
 
-class RecipeMainActivity : AppCompatActivity() {
-  private val store by lazy { RecipeStore() }
+class RecipeMainActivity : BaseActivity() {
+  @Inject
+  lateinit var store: RecipeStore
 
   override fun onCreate(savedInstanceState: Bundle?) {
+    AndroidInjection.inject(this)
     super.onCreate(savedInstanceState)
     setContentView(R.layout.activity_recipe_main)
 
     val recipeId = intent.getStringExtra(RECIPE_ID)
     bsRecipeDetail.recipeId = recipeId
-    launch {
+
+    launch(job) {
       val recipe = store.fetch(recipeId)
+
       withContext(UI) {
         tvTitle.text = recipe.name
         tvDescription.text = recipe.description
