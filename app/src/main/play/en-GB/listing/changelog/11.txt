@@ -1,0 +1,3 @@
+2b69ec1 - add dagger to manage di and room to manage data
+0eb623b - update versionName/Code
+6eca980 - fix some proguard issues, migrate constraintlayout to androidx
