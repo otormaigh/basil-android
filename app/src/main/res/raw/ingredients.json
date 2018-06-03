@@ -1,0 +1,65 @@
+[
+  {
+    "id": "ingredient_1",
+    "recipe_id": "recipe_1",
+    "sort_order": "1",
+    "name": "Basil",
+    "quantity": "6 tbps"
+  },
+  {
+    "id": "ingredient_2",
+    "recipe_id": "recipe_1",
+    "sort_order": "2",
+    "name": "Gluten-free spahgetti",
+    "quantity": "2 cups"
+  },
+  {
+    "id": "ingredient_3",
+    "recipe_id": "recipe_1",
+    "sort_order": "3",
+    "name": "Garlic",
+    "quantity": "1 tbsp"
+  },
+  {
+    "id": "ingredient_4",
+    "recipe_id": "recipe_1",
+    "sort_order": "4",
+    "name": "Ricotta",
+    "quantity": "4 cups"
+  },
+  {
+    "id": "ingredient_5",
+    "recipe_id": "recipe_1",
+    "sort_order": "5",
+    "name": "Kale",
+    "quantity": "3 cups"
+  },
+  {
+    "id": "ingredient_6",
+    "recipe_id": "recipe_1",
+    "sort_order": "6",
+    "name": "Red Pepper Flakes",
+    "quantity": "1 tbsp"
+  },
+  {
+    "id": "ingredient_7",
+    "recipe_id": "recipe_1",
+    "sort_order": "7",
+    "name": "Extra Virgin Olive Oil",
+    "quantity": "1 tbsp"
+  },
+  {
+    "id": "ingredient_8",
+    "recipe_id": "recipe_1",
+    "sort_order": "8",
+    "name": "Salt",
+    "quantity": "1 tbsp"
+  },
+  {
+    "id": "ingredient_9",
+    "recipe_id": "recipe_1",
+    "sort_order": "9",
+    "name": "Pine Nuts",
+    "quantity": "2 tbsp"
+  }
+]

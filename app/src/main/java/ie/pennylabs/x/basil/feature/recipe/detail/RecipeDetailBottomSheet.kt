@@ -1,9 +1,9 @@
 package ie.pennylabs.x.basil.feature.recipe.detail
 
 import android.content.Context
-import android.support.constraint.ConstraintLayout
 import android.util.AttributeSet
 import android.view.LayoutInflater
+import androidx.constraintlayout.widget.ConstraintLayout
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.tabs.TabLayout
 import ie.pennylabs.x.basil.R

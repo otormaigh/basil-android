@@ -1,0 +1,34 @@
+[
+  {
+    "id": "recipe_1",
+    "name": "Creamy Pesto Pasta",
+    "description": "Guilt-free gluten-free spaghetti pasta is sautéed in a garlic, kale pesto. It's an easy and healthy dinner.",
+    "calories": "456g",
+    "protein": "27g",
+    "fat": "12g"
+  },
+  {
+    "id": "recipe_2",
+    "name": "Spinach Filo Puffs",
+    "description": "Guilt-free gluten-free spaghetti pasta is sautéed in a garlic, kale pesto. It's an easy and healthy dinner.",
+    "calories": "456g",
+    "protein": "27g",
+    "fat": "12g"
+  },
+  {
+    "id": "recipe_3",
+    "name": "Beef Pot Pie",
+    "description": "Guilt-free gluten-free spaghetti pasta is sautéed in a garlic, kale pesto. It's an easy and healthy dinner.",
+    "calories": "456g",
+    "protein": "27g",
+    "fat": "12g"
+  },
+  {
+    "id": "recipe_4",
+    "name": "Herb Roasted Chicken",
+    "description": "Guilt-free gluten-free spaghetti pasta is sautéed in a garlic, kale pesto. It's an easy and healthy dinner.",
+    "calories": "456g",
+    "protein": "27g",
+    "fat": "12g"
+  }
+]

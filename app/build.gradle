@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply plugin: 'kotlin-kapt'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: "com.jaredsburrows.spoon"
@@ -18,14 +19,23 @@ android {
     applicationId "ie.pennylabs.x.basil"
     minSdkVersion 21
     targetSdkVersion 27
-    versionCode 10
-    versionName "1.0.$versionCode"
+    versionCode 11
+    versionName "0.1.$versionCode"
     testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     archivesBaseName = "basil-$versionName"
 
     if (file('../signing/play.json').exists()) {
       playAccountConfig = playAccountConfigs.release
     }
+    javaCompileOptions {
+      annotationProcessorOptions {
+        arguments = ["room.schemaLocation": "$projectDir/schemas".toString()]
+      }
+    }
+  }
+
+  sourceSets {
+    androidTest.assets.srcDirs += files("$projectDir/schemas".toString())
   }
 
   signingConfigs {
@@ -50,6 +60,7 @@ android {
     }
 
     release {
+      debuggable true
       if (file('../signing/release.keystore').exists()) {
         signingConfig signingConfigs.release
       } else {
@@ -60,7 +71,7 @@ android {
         removeUnusedResources = true
         removeUnusedCode = true
         optimizeCode = true
-        obfuscate = true
+        obfuscate = false // https://github.com/material-components/material-components-android/issues/115
       }
     }
   }
@@ -81,10 +92,17 @@ dependencies {
   implementation "org.jetbrains.kotlinx:kotlinx-coroutines-reactive:${Deps.coroutines}"
 
   implementation 'com.google.android.material:material:1.0.0-alpha1'
-  implementation 'com.android.support.constraint:constraint-layout:1.1.0'
+  implementation 'androidx.constraintlayout:constraintlayout:1.1.0'
+  implementation "androidx.lifecycle:lifecycle-livedata:2.0.0-alpha1"
+  implementation "androidx.room:room-runtime:$Deps.room"
+  kapt "androidx.room:room-compiler:$Deps.room"
 
   implementation 'com.jakewharton.timber:timber:4.7.0'
   implementation 'com.squareup.moshi:moshi-kotlin:1.6.0'
+  implementation "com.google.dagger:dagger:$Deps.dagger"
+  implementation "com.google.dagger:dagger-android:$Deps.dagger"
+  kapt "com.google.dagger:dagger-compiler:$Deps.dagger"
+  kapt "com.google.dagger:dagger-android-processor:$Deps.dagger"
 
   testImplementation 'junit:junit:4.12'
   androidTestImplementation "com.android.support.test:rules:$Deps.support_test"

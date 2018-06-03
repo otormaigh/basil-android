@@ -5,7 +5,7 @@
   android:layout_width="match_parent"
   android:layout_height="match_parent">
 
-  <android.support.constraint.ConstraintLayout
+  <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -189,7 +189,7 @@
       app:layout_constraintStart_toEndOf="@id/tvGluten"
       app:layout_constraintTop_toTopOf="@id/tvGluten" />
 
-  </android.support.constraint.ConstraintLayout>
+  </androidx.constraintlayout.widget.ConstraintLayout>
 
   <ie.pennylabs.x.basil.feature.recipe.detail.RecipeDetailBottomSheet
     android:id="@+id/bsRecipeDetail"
