@@ -60,7 +60,6 @@ android {
     }
 
     release {
-      debuggable true
       if (file('../signing/release.keystore').exists()) {
         signingConfig signingConfigs.release
       } else {
