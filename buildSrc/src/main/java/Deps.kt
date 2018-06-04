@@ -13,4 +13,7 @@ object Deps {
 
   // com.google.dagger
   const val dagger = "2.16"
+
+  // com.jraska
+  const val falcon = "2.0.1"
 }

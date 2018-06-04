@@ -75,6 +75,10 @@ android {
       }
     }
   }
+
+  testOptions {
+    animationsDisabled = true
+  }
 }
 
 play {
@@ -114,6 +118,8 @@ dependencies {
   androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0-alpha3', {
     exclude group: 'androidx.annotations', module: 'annotations'
   }
+  androidTestImplementation "com.jraska:falcon:$Deps.falcon"
+  androidTestImplementation "com.jraska:falcon-spoon-compat:$Deps.falcon"
   androidTestImplementation "com.squareup.spoon:spoon-client:2.0.0-SNAPSHOT"
 
   ktlint "com.github.shyiko:ktlint:0.23.1"
