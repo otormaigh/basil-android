@@ -19,9 +19,9 @@ android {
     applicationId "ie.pennylabs.x.basil"
     minSdkVersion 21
     targetSdkVersion 27
-    versionCode 13
+    versionCode 14
     versionName "0.1.$versionCode"
-    testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     archivesBaseName = "basil-$versionName"
 
     if (file('../signing/play.json').exists()) {
@@ -75,6 +75,10 @@ android {
       }
     }
   }
+
+  testOptions {
+    animationsDisabled = true
+  }
 }
 
 play {
@@ -83,7 +87,7 @@ play {
 }
 
 spoon {
-  baseOutputDir = "$project.buildDir/reports/spoon"
+  baseOutputDir = "$project.buildDir/reports/androidTests/spoon"
 }
 
 configurations {
@@ -109,9 +113,13 @@ dependencies {
   kapt "com.google.dagger:dagger-android-processor:$Deps.dagger"
 
   testImplementation 'junit:junit:4.12'
-  androidTestImplementation "com.android.support.test:rules:$Deps.support_test"
-  androidTestImplementation "com.android.support.test:runner:$Deps.support_test"
-  androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+  androidTestImplementation "androidx.test:rules:$Deps.androidx_test"
+  androidTestImplementation "androidx.test:runner:$Deps.androidx_test"
+  androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0-alpha3', {
+    exclude group: 'androidx.annotations', module: 'annotations'
+  }
+  androidTestImplementation "com.jraska:falcon:$Deps.falcon"
+  androidTestImplementation "com.jraska:falcon-spoon-compat:$Deps.falcon"
   androidTestImplementation "com.squareup.spoon:spoon-client:2.0.0-SNAPSHOT"
 
   ktlint "com.github.shyiko:ktlint:0.23.1"
