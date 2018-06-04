@@ -19,7 +19,7 @@ class RecipeListActivity : BaseActivity() {
     super.onCreate(savedInstanceState)
     setContentView(R.layout.activity_recipe_list)
 
-    store.fetchAll().observe(this@RecipeListActivity, Observer {recipes ->
+    store.fetchAll().observe(this@RecipeListActivity, Observer { recipes ->
       if (recipes != null) {
         pagerRecipe.adapter = RecipePagerAdapter(recipes)
         ivOpenRecipe.setOnClickListener {

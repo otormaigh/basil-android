@@ -9,8 +9,9 @@ import ie.pennylabs.x.basil.data.model.RecipeDao
 import ie.pennylabs.x.basil.toolbox.extension.rawJsonToString
 
 class RecipeStore(
-    private val dao: RecipeDao,
-    private val moshi: Moshi) {
+  private val dao: RecipeDao,
+  private val moshi: Moshi
+) {
 
   fun fetch(id: String) = dao.fetch(id)
 

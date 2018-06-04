@@ -14,7 +14,7 @@ class RecipeDetailBottomSheet : ConstraintLayout {
   val bottomSheet: BottomSheetBehavior<RecipeDetailBottomSheet> by lazy { BottomSheetBehavior.from(this) }
   var recipeId: String = ""
     set(value) {
-      pager.adapter = RecipePagerAdapter(value)
+      pager.adapter = RecipeDetailPagerAdapter(value)
       bottomSheet.state = BottomSheetBehavior.STATE_COLLAPSED
     }
 
@@ -27,7 +27,7 @@ class RecipeDetailBottomSheet : ConstraintLayout {
 
     pager.apply {
       pagerTabs.setupWithViewPager(this)
-      adapter = RecipePagerAdapter(recipeId)
+      adapter = RecipeDetailPagerAdapter(recipeId)
     }
 
     pagerTabs.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {

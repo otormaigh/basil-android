@@ -10,8 +10,9 @@ import ie.pennylabs.x.basil.data.model.IngredientDao
 import ie.pennylabs.x.basil.toolbox.extension.rawJsonToString
 
 class IngredientStore(
-    private val dao: IngredientDao,
-    private val moshi: Moshi) {
+  private val dao: IngredientDao,
+  private val moshi: Moshi
+) {
 
   fun fetchForRecipe(recipeId: String): LiveData<List<Ingredient>> = dao.fetchForRecipe(recipeId)
 
