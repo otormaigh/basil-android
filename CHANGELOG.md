@@ -1,3 +1,11 @@
+Version 0.1.14
+------------------------
+ - add listing descriptions
+ - add launcher icon
+ - add Falcon to take spoon screenshots, update play store listing screenshots
+ - convert test over to jetpack artifacts
+ - update gradle to 4.8
+
 Version 0.1.13 - 01981ba
 ------------------------
  - add extension functions to help with setting OnTabSelectedListener>

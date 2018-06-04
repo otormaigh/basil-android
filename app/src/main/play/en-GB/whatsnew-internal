@@ -1,4 +1,5 @@
-b5f55c5 - add extension functions to help with setting OnTabSelectedListener
-6931475 - update DirectionsPage to use merge tag on layout
-d8cda9b - convert RecipeMainActivity into BottomSheetDialogFragment
-efbf2bf - add ktlint to handle linting things
+ - add listing descriptions
+ - add launcher icon
+ - add Falcon to take spoon screenshots, update play store listing screenshots
+ - convert test over to jetpack artifacts
+ - update gradle to 4.8
