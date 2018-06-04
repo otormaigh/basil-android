@@ -1,0 +1,4 @@
+b5f55c5 - add extension functions to help with setting OnTabSelectedListener
+6931475 - update DirectionsPage to use merge tag on layout
+d8cda9b - convert RecipeMainActivity into BottomSheetDialogFragment
+efbf2bf - add ktlint to handle linting things

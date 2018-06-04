@@ -1,1 +1,0 @@
-342a794 - add android.injected.testOnly=false flag to gradle.properties
