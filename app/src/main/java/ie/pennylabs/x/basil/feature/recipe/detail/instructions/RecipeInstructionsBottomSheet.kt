@@ -5,8 +5,9 @@ import android.util.AttributeSet
 import android.view.LayoutInflater
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.google.android.material.bottomsheet.BottomSheetBehavior
-import com.google.android.material.tabs.TabLayout
 import ie.pennylabs.x.basil.R
+import ie.pennylabs.x.basil.toolbox.extension.doOnTabReselected
+import ie.pennylabs.x.basil.toolbox.extension.doOnTabSelected
 import ie.pennylabs.x.basil.toolbox.extension.expand
 import kotlinx.android.synthetic.main.bottom_sheet_recipe_instructions.view.*
 
@@ -29,18 +30,7 @@ class RecipeInstructionsBottomSheet : ConstraintLayout {
       pagerTabs.setupWithViewPager(this)
       adapter = RecipeInstructionsPagerAdapter(recipeId)
     }
-
-    pagerTabs.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
-      override fun onTabReselected(p0: TabLayout.Tab?) {
-        bottomSheet.expand()
-      }
-
-      override fun onTabUnselected(p0: TabLayout.Tab?) {
-      }
-
-      override fun onTabSelected(p0: TabLayout.Tab?) {
-        bottomSheet.expand()
-      }
-    })
+    pagerTabs.doOnTabReselected { bottomSheet.expand() }
+    pagerTabs.doOnTabSelected { bottomSheet.expand() }
   }
 }
