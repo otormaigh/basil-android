@@ -84,6 +84,7 @@ android {
 play {
   track = 'internal'
   untrackOld = true
+  uploadImages = true
 }
 
 spoon {
