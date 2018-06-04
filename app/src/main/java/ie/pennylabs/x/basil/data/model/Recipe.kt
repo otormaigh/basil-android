@@ -35,7 +35,7 @@ abstract class RecipeDao {
   abstract fun insert(recipes: List<Recipe>)
 
   @Query("SELECT * FROM $TABLE_NAME WHERE $ID = :id")
-  abstract fun fetch(id: String): Recipe
+  abstract fun fetch(id: String): LiveData<Recipe>
 
   @Query("SELECT * FROM $TABLE_NAME")
   abstract fun fetchAll(): LiveData<List<Recipe>>

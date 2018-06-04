@@ -1,46 +1,67 @@
 package ie.pennylabs.x.basil.feature.recipe.detail
 
-import android.content.Context
-import android.util.AttributeSet
+import android.os.Bundle
 import android.view.LayoutInflater
-import androidx.constraintlayout.widget.ConstraintLayout
+import android.view.View
+import android.view.ViewGroup
+import androidx.coordinatorlayout.widget.CoordinatorLayout
+import androidx.fragment.app.FragmentManager
+import androidx.lifecycle.Observer
 import com.google.android.material.bottomsheet.BottomSheetBehavior
-import com.google.android.material.tabs.TabLayout
+import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import ie.pennylabs.x.basil.BasilApplication
 import ie.pennylabs.x.basil.R
-import ie.pennylabs.x.basil.toolbox.extension.expand
-import kotlinx.android.synthetic.main.bottom_sheet_recipe_detail.view.*
+import ie.pennylabs.x.basil.data.store.RecipeStore
+import kotlinx.android.synthetic.main.bottom_sheet_recipe_detail.*
+import javax.inject.Inject
 
-class RecipeDetailBottomSheet : ConstraintLayout {
-  val bottomSheet: BottomSheetBehavior<RecipeDetailBottomSheet> by lazy { BottomSheetBehavior.from(this) }
+class RecipeDetailBottomSheet : BottomSheetDialogFragment() {
+  @Inject
+  lateinit var store: RecipeStore
   var recipeId: String = ""
     set(value) {
-      pager.adapter = RecipeDetailPagerAdapter(value)
-      bottomSheet.state = BottomSheetBehavior.STATE_COLLAPSED
+      field = value
+      store.fetch(recipeId).observe(this, Observer {
+        it?.let { recipe ->
+          tvTitle.text = recipe.name
+          tvDescription.text = recipe.description
+          tvValueCalories.text = recipe.calories
+          tvValueProtein.text = recipe.protein
+          tvValueFat.text = recipe.fat
+        }
+      })
     }
-
-  constructor(context: Context) : super(context)
-  constructor(context: Context, attrs: AttributeSet) : super(context, attrs)
-  constructor(context: Context, attrs: AttributeSet, defStyleAttr: Int) : super(context, attrs, defStyleAttr)
 
   init {
-    LayoutInflater.from(context).inflate(R.layout.bottom_sheet_recipe_detail, this, true)
+    BasilApplication.component.inject(this)
+  }
 
-    pager.apply {
-      pagerTabs.setupWithViewPager(this)
-      adapter = RecipeDetailPagerAdapter(recipeId)
+  fun show(manager: FragmentManager?) {
+    super.show(manager, TAG)
+  }
+
+  override fun onStart() {
+    super.onStart()
+    dialog.findViewById<View>(R.id.design_bottom_sheet)?.let { bs ->
+      bs.layoutParams.height = ViewGroup.LayoutParams.MATCH_PARENT
     }
 
-    pagerTabs.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
-      override fun onTabReselected(p0: TabLayout.Tab?) {
-        bottomSheet.expand()
-      }
+    view?.post {
+      val params = (view?.parent as View).layoutParams as CoordinatorLayout.LayoutParams
+      val bottomSheetBehavior = params.behavior as BottomSheetBehavior<*>?
+      bottomSheetBehavior?.peekHeight = view?.measuredHeight ?: 0
+    }
+  }
 
-      override fun onTabUnselected(p0: TabLayout.Tab?) {
-      }
+  override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
+    inflater.inflate(R.layout.bottom_sheet_recipe_detail, container, false)
 
-      override fun onTabSelected(p0: TabLayout.Tab?) {
-        bottomSheet.expand()
-      }
-    })
+  override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+    super.onViewCreated(view, savedInstanceState)
+    bsRecipeInstructions.recipeId = recipeId
+  }
+
+  companion object {
+    const val TAG = "bottom_sheet_recipe_detail"
   }
 }

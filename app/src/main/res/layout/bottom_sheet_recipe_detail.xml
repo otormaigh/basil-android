@@ -1,28 +1,201 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
   xmlns:app="http://schemas.android.com/apk/res-auto"
-  xmlns:tools="http://schemas.android.com/tools"
-  tools:parentTag="androidx.constraintlayout.widget.ConstraintLayout">
+  android:layout_width="match_parent"
+  android:layout_height="match_parent">
 
-  <androidx.viewpager.widget.ViewPager
-    android:id="@+id/pager"
+  <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/bg_recipe_detail">
 
-    <com.google.android.material.tabs.TabLayout
-      android:id="@+id/pagerTabs"
-      android:layout_width="match_parent"
-      android:layout_height="@dimen/tab_height"
-      android:background="@null"
-      app:tabIndicatorColor="@color/primary_500"
-      app:tabTextColor="@color/primary_500" />
-  </androidx.viewpager.widget.ViewPager>
+    <View
+      android:id="@+id/vItemBackground"
+      android:layout_width="0dp"
+      android:layout_height="0dp"
+      android:layout_marginStart="@dimen/horizontal_margin_double"
+      android:layout_marginTop="@dimen/vertical_margin_quad"
+      android:layout_marginEnd="@dimen/horizontal_margin_double"
+      android:alpha="0.5"
+      android:background="@color/primary_100"
+      app:layout_constraintBottom_toBottomOf="@id/tvDescription"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="@id/tvTitle" />
 
-  <View
-    android:layout_width="0dp"
-    android:layout_height="1dp"
-    android:background="@color/primary_100"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent" />
-</merge>
+    <View
+      android:layout_width="0dp"
+      android:layout_height="1dp"
+      android:background="@color/primary_500"
+      app:layout_constraintBottom_toTopOf="@id/tvDescription"
+      app:layout_constraintEnd_toEndOf="@id/vItemBackground"
+      app:layout_constraintStart_toStartOf="@id/vItemBackground"
+      app:layout_constraintTop_toBottomOf="@id/tvTitle" />
+
+    <TextView
+      android:id="@+id/tvTitle"
+      style="@style/Title.Recipe"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="@dimen/vertical_margin_double"
+      android:text="Creamy Pesto Pasta"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+      android:id="@+id/tvDescription"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="@dimen/horizontal_margin_tri"
+      android:layout_marginTop="@dimen/vertical_margin_double"
+      android:layout_marginEnd="@dimen/horizontal_margin_tri"
+      android:fontFamily="@font/lekton_bold"
+      android:lineSpacingExtra="8dp"
+      android:paddingBottom="@dimen/vertical_margin"
+      android:text="Guilt-free gluten-free spaghetti pasta is sautéed in a garilc, kale pesto. It\'s an easy and healthy dinner."
+      android:textAlignment="center"
+      android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+      app:layout_constraintEnd_toEndOf="@id/vItemBackground"
+      app:layout_constraintStart_toStartOf="@id/vItemBackground"
+      app:layout_constraintTop_toBottomOf="@id/tvTitle" />
+
+    <TextView
+      android:id="@+id/tvTitleCalories"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:fontFamily="@font/lekton"
+      android:text="Calories"
+      android:textAppearance="@style/TextAppearance.AppCompat.Title"
+      app:layout_constraintEnd_toStartOf="@id/tvTitleProtein"
+      app:layout_constraintHorizontal_chainStyle="spread"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="@id/tvTitleProtein" />
+
+    <TextView
+      android:id="@+id/tvValueCalories"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:fontFamily="@font/lekton_bold"
+      android:text="456g"
+      android:textAppearance="@style/TextAppearance.AppCompat.Title"
+      app:layout_constraintEnd_toEndOf="@id/tvTitleCalories"
+      app:layout_constraintStart_toStartOf="@id/tvTitleCalories"
+      app:layout_constraintTop_toBottomOf="@id/tvTitleCalories" />
+
+    <View
+      android:layout_width="1dp"
+      android:layout_height="0dp"
+      android:background="@color/primary_500"
+      app:layout_constraintBottom_toBottomOf="@id/tvValueProtein"
+      app:layout_constraintEnd_toStartOf="@id/tvTitleProtein"
+      app:layout_constraintStart_toEndOf="@id/tvTitleCalories"
+      app:layout_constraintTop_toTopOf="@id/tvTitleProtein" />
+
+    <TextView
+      android:id="@+id/tvTitleProtein"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="@dimen/vertical_margin"
+      android:fontFamily="@font/lekton"
+      android:text="Protein"
+      android:textAppearance="@style/TextAppearance.AppCompat.Title"
+      app:layout_constraintEnd_toStartOf="@id/tvTitleFat"
+      app:layout_constraintStart_toEndOf="@id/tvTitleCalories"
+      app:layout_constraintTop_toBottomOf="@+id/tvDescription" />
+
+    <TextView
+      android:id="@+id/tvValueProtein"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:fontFamily="@font/lekton_bold"
+      android:text="27g"
+      android:textAppearance="@style/TextAppearance.AppCompat.Title"
+      app:layout_constraintEnd_toEndOf="@id/tvTitleProtein"
+      app:layout_constraintStart_toStartOf="@id/tvTitleProtein"
+      app:layout_constraintTop_toBottomOf="@id/tvTitleProtein" />
+
+    <View
+      android:layout_width="1dp"
+      android:layout_height="0dp"
+      android:background="@color/primary_500"
+      app:layout_constraintBottom_toBottomOf="@id/tvValueProtein"
+      app:layout_constraintEnd_toStartOf="@id/tvTitleFat"
+      app:layout_constraintStart_toEndOf="@id/tvTitleProtein"
+      app:layout_constraintTop_toTopOf="@id/tvTitleProtein" />
+
+    <TextView
+      android:id="@+id/tvTitleFat"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:fontFamily="@font/lekton"
+      android:text="Fat"
+      android:textAppearance="@style/TextAppearance.AppCompat.Title"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toEndOf="@id/tvTitleProtein"
+      app:layout_constraintTop_toTopOf="@id/tvTitleProtein" />
+
+    <TextView
+      android:id="@+id/tvValueFat"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:fontFamily="@font/lekton_bold"
+      android:text="12g"
+      android:textAppearance="@style/TextAppearance.AppCompat.Title"
+      app:layout_constraintEnd_toEndOf="@id/tvTitleFat"
+      app:layout_constraintStart_toStartOf="@id/tvTitleFat"
+      app:layout_constraintTop_toBottomOf="@id/tvTitleFat" />
+
+    <View
+      android:layout_width="0dp"
+      android:layout_height="1dp"
+      android:background="@color/primary_500"
+      app:layout_constraintBottom_toTopOf="@id/tvGluten"
+      app:layout_constraintEnd_toEndOf="@id/vItemBackground"
+      app:layout_constraintStart_toStartOf="@id/vItemBackground"
+      app:layout_constraintTop_toBottomOf="@id/tvValueProtein" />
+
+    <TextView
+      android:id="@+id/tvGluten"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="@dimen/vertical_margin_tri"
+      android:layout_marginEnd="@dimen/horizontal_margin"
+      android:layout_marginBottom="@dimen/vertical_margin_tri"
+      android:drawableStart="@drawable/ic_block"
+      android:drawablePadding="@dimen/horizontal_margin"
+      android:fontFamily="@font/lekton_bold"
+      android:gravity="center_vertical"
+      android:text="Gluten Free"
+      android:textAppearance="@style/TextAppearance.AppCompat.Title"
+      app:layout_constraintEnd_toStartOf="@id/tvEgg"
+      app:layout_constraintHorizontal_chainStyle="packed"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@id/tvValueProtein" />
+
+    <TextView
+      android:id="@+id/tvEgg"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="@dimen/horizontal_margin"
+      android:drawableStart="@drawable/ic_block"
+      android:drawablePadding="@dimen/horizontal_margin"
+      android:fontFamily="@font/lekton_bold"
+      android:gravity="center_vertical"
+      android:text="Egg Free"
+      android:textAppearance="@style/TextAppearance.AppCompat.Title"
+      app:layout_constraintBottom_toBottomOf="@id/tvGluten"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toEndOf="@id/tvGluten"
+      app:layout_constraintTop_toTopOf="@id/tvGluten" />
+
+  </androidx.constraintlayout.widget.ConstraintLayout>
+
+  <ie.pennylabs.x.basil.feature.recipe.detail.instructions.RecipeInstructionsBottomSheet
+    android:id="@+id/bsRecipeInstructions"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_recipe_detail"
+    app:behavior_peekHeight="@dimen/tab_height"
+    app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior" />
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
