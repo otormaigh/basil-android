@@ -25,8 +25,8 @@ class RecipeListActivity : BaseActivity() {
         pagerRecipe.adapter = RecipePagerAdapter(recipes)
 
         ivOpenRecipe.setOnClickListener {
-          recipeDetailBottomSheet.show(supportFragmentManager)
           recipeDetailBottomSheet.recipeId = recipes[pagerRecipe.currentItem].id
+          recipeDetailBottomSheet.show(supportFragmentManager)
         }
       }
     })
