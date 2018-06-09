@@ -9,7 +9,7 @@ android {
   if (file('../signing/play.json').exists()) {
     playAccountConfigs {
       release {
-        jsonFile = file(Keystore.PLAY_JSON)
+        jsonFile = file("../signing/play.json")
       }
     }
   }
