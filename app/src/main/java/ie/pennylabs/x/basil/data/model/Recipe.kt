@@ -30,13 +30,13 @@ data class Recipe(
 }
 
 @Dao
-abstract class RecipeDao {
+interface RecipeDao {
   @Insert(onConflict = OnConflictStrategy.REPLACE)
-  abstract fun insert(recipes: List<Recipe>)
+  fun insert(recipes: List<Recipe>)
 
   @Query("SELECT * FROM $TABLE_NAME WHERE $ID = :id")
-  abstract fun fetch(id: String): LiveData<Recipe>
+  fun fetch(id: String): LiveData<Recipe>
 
   @Query("SELECT * FROM $TABLE_NAME")
-  abstract fun fetchAll(): LiveData<List<Recipe>>
+  fun fetchAll(): LiveData<List<Recipe>>
 }

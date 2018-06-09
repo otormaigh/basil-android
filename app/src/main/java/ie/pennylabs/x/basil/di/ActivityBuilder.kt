@@ -5,7 +5,7 @@ import dagger.android.ContributesAndroidInjector
 import ie.pennylabs.x.basil.feature.recipe.list.ListActivity
 
 @Module
-abstract class ActivityBuilder {
+interface ActivityBuilder {
   @ContributesAndroidInjector
-  abstract fun bindRecipeListActivity(): ListActivity
+  fun bindRecipeListActivity(): ListActivity
 }

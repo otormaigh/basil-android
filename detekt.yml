@@ -1,0 +1,38 @@
+failFast: true
+
+comments:
+  active: true
+  UndocumentedPublicClass:
+    active: false
+  UndocumentedPublicFunction:
+    active: false
+  CommentOverPrivateFunction:
+    active: false
+
+complexity:
+  active: true
+  LabeledExpression:
+    active: false
+
+potential-bugs:
+  active: true
+  UnsafeCallOnNullableType:
+    active: false
+  UnsafeCast:
+    active: false
+  LateinitUsage:
+    active: false
+
+style:
+  active: true
+  ForbiddenComment:
+    active: false
+  MagicNumber:
+    active: false
+  MaxLineLength:
+    active: true
+    maxLineLength: 200
+  NewLineAtEndOfFile:
+    active: false
+  WildcardImport:
+    active: false

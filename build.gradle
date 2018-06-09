@@ -14,6 +14,10 @@ buildscript {
   }
 }
 
+plugins {
+  id "io.gitlab.arturbosch.detekt" version "1.0.0.RC7-2"
+}
+
 allprojects {
   repositories {
     google()
@@ -30,4 +34,14 @@ task clean(type: Delete) {
 task wrapper(type: Wrapper) {
   gradleVersion = "4.8"
   distributionType = "all"
+}
+
+detekt {
+  version = "1.0.0.RC7-2"
+  defaultProfile {
+    config = file("$project.rootDir/detekt.yml")
+    input = file(project.projectDir)
+    output = "$project.buildDir/reports/detekt"
+    filters = ".*Test.*,.*AndroidTest.*,.*/resources/.*,.*/tmp/.*"
+  }
 }
