@@ -14,11 +14,11 @@ android {
     }
   }
 
-  compileSdkVersion 'android-P'
+  compileSdkVersion 28
   defaultConfig {
     applicationId "ie.pennylabs.x.basil"
     minSdkVersion 21
-    targetSdkVersion 27
+    targetSdkVersion 28
     versionCode 15
     versionName "0.1.$versionCode"
     testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
