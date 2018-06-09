@@ -1,3 +1,10 @@
+Version 0.1.15 -
+------------------------
+ - remove ktlint replace with detekt
+ - rename files names to make them more concise
+ - update compile/targeSdk to 28
+ - #18 Recipe detail page not updating
+
 Version 0.1.14 - 8811536
 ------------------------
  - add listing descriptions
