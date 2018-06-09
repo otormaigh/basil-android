@@ -4,7 +4,7 @@ import dagger.BindsInstance
 import dagger.Component
 import dagger.android.AndroidInjectionModule
 import ie.pennylabs.x.basil.BasilApplication
-import ie.pennylabs.x.basil.feature.recipe.detail.RecipeDetailBottomSheet
+import ie.pennylabs.x.basil.feature.recipe.detail.DetailBottomSheet
 import ie.pennylabs.x.basil.feature.recipe.detail.ingredients.IngredientsPage
 import javax.inject.Singleton
 
@@ -21,5 +21,5 @@ interface AppComponent {
 
   fun inject(application: BasilApplication)
   fun inject(ingredientsPage: IngredientsPage)
-  fun inject(recipeDetailBottomSheet: RecipeDetailBottomSheet)
+  fun inject(detailBottomSheet: DetailBottomSheet)
 }

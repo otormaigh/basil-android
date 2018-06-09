@@ -6,7 +6,7 @@ import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.rule.ActivityTestRule
 import androidx.test.runner.AndroidJUnit4
 import ie.pennylabs.x.basil.R
-import ie.pennylabs.x.basil.feature.recipe.list.RecipeListActivity
+import ie.pennylabs.x.basil.feature.recipe.list.ListActivity
 import ie.pennylabs.x.basil.spoon.SpoonTest
 import kotlinx.coroutines.experimental.delay
 import kotlinx.coroutines.experimental.runBlocking
@@ -15,9 +15,9 @@ import org.junit.Test
 import org.junit.runner.RunWith
 
 @RunWith(AndroidJUnit4::class)
-class RecipeListActivitySpoon : SpoonTest() {
+class ListActivitySpoon : SpoonTest() {
   @get:Rule
-  val activityRule = ActivityTestRule(RecipeListActivity::class.java)
+  val activityRule = ActivityTestRule(ListActivity::class.java)
 
   @Test
   fun spoonRecipeList() = runBlocking<Unit> {

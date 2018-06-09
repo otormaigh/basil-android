@@ -7,11 +7,15 @@ buildscript {
     maven { url "https://oss.sonatype.org/content/repositories/snapshots" }
   }
   dependencies {
-    classpath 'com.android.tools.build:gradle:3.2.0-alpha16'
+    classpath 'com.android.tools.build:gradle:3.2.0-alpha17'
     classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$Deps.kotlin"
     classpath "com.jaredsburrows:gradle-spoon-plugin:1.4.1-SNAPSHOT"
     classpath 'com.github.triplet.gradle:play-publisher:1.2.2'
   }
+}
+
+plugins {
+  id "io.gitlab.arturbosch.detekt" version "1.0.0.RC7-2"
 }
 
 allprojects {
@@ -30,4 +34,14 @@ task clean(type: Delete) {
 task wrapper(type: Wrapper) {
   gradleVersion = "4.8"
   distributionType = "all"
+}
+
+detekt {
+  version = "1.0.0.RC7-2"
+  defaultProfile {
+    config = file("$project.rootDir/detekt.yml")
+    input = file(project.projectDir)
+    output = "$project.buildDir/reports/detekt"
+    filters = ".*Test.*,.*AndroidTest.*,.*/resources/.*,.*/tmp/.*"
+  }
 }

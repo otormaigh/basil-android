@@ -9,13 +9,13 @@ import ie.pennylabs.x.basil.R
 import ie.pennylabs.x.basil.toolbox.extension.doOnTabReselected
 import ie.pennylabs.x.basil.toolbox.extension.doOnTabSelected
 import ie.pennylabs.x.basil.toolbox.extension.expand
-import kotlinx.android.synthetic.main.bottom_sheet_recipe_instructions.view.*
+import kotlinx.android.synthetic.main.bottom_sheet_instructions.view.*
 
-class RecipeInstructionsBottomSheet : ConstraintLayout {
-  val bottomSheet: BottomSheetBehavior<RecipeInstructionsBottomSheet> by lazy { BottomSheetBehavior.from(this) }
+class InstructionsBottomSheet : ConstraintLayout {
+  val bottomSheet: BottomSheetBehavior<InstructionsBottomSheet> by lazy { BottomSheetBehavior.from(this) }
   var recipeId: String = ""
     set(value) {
-      pager.adapter = RecipeInstructionsPagerAdapter(value)
+      pager.adapter = InstructionsPagerAdapter(value)
       bottomSheet.state = BottomSheetBehavior.STATE_COLLAPSED
     }
 
@@ -24,11 +24,11 @@ class RecipeInstructionsBottomSheet : ConstraintLayout {
   constructor(context: Context, attrs: AttributeSet, defStyleAttr: Int) : super(context, attrs, defStyleAttr)
 
   init {
-    LayoutInflater.from(context).inflate(R.layout.bottom_sheet_recipe_instructions, this, true)
+    LayoutInflater.from(context).inflate(R.layout.bottom_sheet_instructions, this, true)
 
     pager.apply {
       pagerTabs.setupWithViewPager(this)
-      adapter = RecipeInstructionsPagerAdapter(recipeId)
+      adapter = InstructionsPagerAdapter(recipeId)
     }
     pagerTabs.doOnTabReselected { bottomSheet.expand() }
     pagerTabs.doOnTabSelected { bottomSheet.expand() }

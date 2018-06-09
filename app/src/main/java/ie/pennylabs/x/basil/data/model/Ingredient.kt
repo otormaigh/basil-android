@@ -42,10 +42,10 @@ class IngredientDiffUtil : DiffUtil.ItemCallback<Ingredient>() {
 }
 
 @Dao
-abstract class IngredientDao {
+interface IngredientDao {
   @Insert(onConflict = OnConflictStrategy.REPLACE)
-  abstract fun insert(ingredients: List<Ingredient>)
+  fun insert(ingredients: List<Ingredient>)
 
   @Query("SELECT * FROM $TABLE_NAME WHERE $RECIPE_ID = :recipeId")
-  abstract fun fetchForRecipe(recipeId: String): LiveData<List<Ingredient>>
+  fun fetchForRecipe(recipeId: String): LiveData<List<Ingredient>>
 }

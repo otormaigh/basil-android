@@ -6,7 +6,7 @@ import androidx.viewpager.widget.PagerAdapter
 import ie.pennylabs.x.basil.feature.recipe.detail.directions.DirectionsPage
 import ie.pennylabs.x.basil.feature.recipe.detail.ingredients.IngredientsPage
 
-class RecipeInstructionsPagerAdapter(private val recipeId: String) : PagerAdapter() {
+class InstructionsPagerAdapter(private val recipeId: String) : PagerAdapter() {
 
   override fun isViewFromObject(view: View, `object`: Any) = view === `object`
   override fun getCount() = 2

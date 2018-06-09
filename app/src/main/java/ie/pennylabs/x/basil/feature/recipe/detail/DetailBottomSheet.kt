@@ -6,31 +6,18 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.fragment.app.FragmentManager
-import androidx.lifecycle.Observer
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import ie.pennylabs.x.basil.BasilApplication
 import ie.pennylabs.x.basil.R
 import ie.pennylabs.x.basil.data.store.RecipeStore
-import kotlinx.android.synthetic.main.bottom_sheet_recipe_detail.*
+import kotlinx.android.synthetic.main.bottom_sheet_detail.*
 import javax.inject.Inject
 
-class RecipeDetailBottomSheet : BottomSheetDialogFragment() {
+class DetailBottomSheet : BottomSheetDialogFragment() {
   @Inject
   lateinit var store: RecipeStore
   var recipeId: String = ""
-    set(value) {
-      field = value
-      store.fetch(recipeId).observe(this, Observer {
-        it?.let { recipe ->
-          tvTitle.text = recipe.name
-          tvDescription.text = recipe.description
-          tvValueCalories.text = recipe.calories
-          tvValueProtein.text = recipe.protein
-          tvValueFat.text = recipe.fat
-        }
-      })
-    }
 
   init {
     BasilApplication.component.inject(this)
@@ -38,6 +25,18 @@ class RecipeDetailBottomSheet : BottomSheetDialogFragment() {
 
   fun show(manager: FragmentManager?) {
     super.show(manager, TAG)
+
+    store.fetch(recipeId).observeForever {
+      it?.let { recipe ->
+        tvTitle.text = recipe.name
+        tvDescription.text = recipe.description
+        tvValueCalories.text = recipe.calories
+        tvValueProtein.text = recipe.protein
+        tvValueFat.text = recipe.fat
+
+        bsRecipeInstructions.recipeId = recipeId
+      }
+    }
   }
 
   override fun onStart() {
@@ -54,11 +53,12 @@ class RecipeDetailBottomSheet : BottomSheetDialogFragment() {
   }
 
   override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
-    inflater.inflate(R.layout.bottom_sheet_recipe_detail, container, false)
+    inflater.inflate(R.layout.bottom_sheet_detail, container, false)
 
-  override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-    super.onViewCreated(view, savedInstanceState)
-    bsRecipeInstructions.recipeId = recipeId
+  override fun dismiss() {
+    super.dismiss()
+
+    store.fetch(recipeId).removeObservers(this)
   }
 
   companion object {

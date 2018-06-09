@@ -9,17 +9,17 @@ android {
   if (file('../signing/play.json').exists()) {
     playAccountConfigs {
       release {
-        jsonFile = file('../signing/play.json')
+        jsonFile = file(Keystore.PLAY_JSON)
       }
     }
   }
 
-  compileSdkVersion 'android-P'
+  compileSdkVersion 28
   defaultConfig {
     applicationId "ie.pennylabs.x.basil"
     minSdkVersion 21
-    targetSdkVersion 27
-    versionCode 14
+    targetSdkVersion 28
+    versionCode 15
     versionName "0.1.$versionCode"
     testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     archivesBaseName = "basil-$versionName"
@@ -41,10 +41,10 @@ android {
   signingConfigs {
     if (file('../signing/release.keystore').exists()) {
       release {
-        storeFile file(Keystore.releaseStore)
-        storePassword Keystore.storePassword
-        keyAlias Keystore.keyAlias
-        keyPassword Keystore.keyPassword
+        storeFile file(Keystore.RELEASE_STORE)
+        storePassword Keystore.STORE_PASSWORD
+        keyAlias Keystore.KEY_ALIAS
+        keyPassword Keystore.KEY_PASSWORD
       }
     }
 
@@ -91,10 +91,6 @@ spoon {
   baseOutputDir = "$project.buildDir/reports/androidTests/spoon"
 }
 
-configurations {
-  ktlint
-}
-
 dependencies {
   implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$Deps.kotlin"
   implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Deps.coroutines}"
@@ -122,8 +118,6 @@ dependencies {
   androidTestImplementation "com.jraska:falcon:$Deps.falcon"
   androidTestImplementation "com.jraska:falcon-spoon-compat:$Deps.falcon"
   androidTestImplementation "com.squareup.spoon:spoon-client:2.0.0-SNAPSHOT"
-
-  ktlint "com.github.shyiko:ktlint:0.23.1"
 }
 
 kotlin {
@@ -135,17 +129,4 @@ androidExtensions {
   experimental = true
 }
 
-task ktlint(type: JavaExec, group: "verification") {
-  description = "Check Kotlin code style."
-  classpath = configurations.ktlint
-  main = "com.github.shyiko.ktlint.Main"
-  args "src/**/*.kt", "--reporter=plain", "--reporter=checkstyle,output=${project.buildDir}/reports/ktlint.xml"
-}
-check.dependsOn ktlint
-
-task ktlintFormat(type: JavaExec, group: "formatting") {
-  description = "Fix Kotlin code style deviations."
-  classpath = configurations.ktlint
-  main = "com.github.shyiko.ktlint.Main"
-  args "-F", "src/**/*.kt"
-}
+check.dependsOn rootProject.detektCheck

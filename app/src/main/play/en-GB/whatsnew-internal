@@ -1,5 +1,4 @@
- - add listing descriptions
- - add launcher icon
- - add Falcon to take spoon screenshots, update play store listing screenshots
- - convert test over to jetpack artifacts
- - update gradle to 4.8
+ - remove ktlint replace with detekt
+ - rename files names to make them more concise
+ - update compile/targeSdk to 28
+ - #18 Recipe detail page not updating

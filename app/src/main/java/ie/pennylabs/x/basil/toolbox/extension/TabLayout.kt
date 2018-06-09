@@ -29,14 +29,11 @@ fun TabLayout.addOnTabSelectedListener(
   return listener
 }
 
-fun TabLayout.doOnTabReselected(action: OnTabReselected): TabLayout.OnTabSelectedListener {
-  return addOnTabSelectedListener(onReselected = action)
-}
+fun TabLayout.doOnTabReselected(action: OnTabReselected): TabLayout.OnTabSelectedListener =
+  addOnTabSelectedListener(onReselected = action)
 
-fun TabLayout.doOnTabUnseleted(action: OnTabUnselected): TabLayout.OnTabSelectedListener {
-  return addOnTabSelectedListener(onUnselected = action)
-}
+fun TabLayout.doOnTabUnseleted(action: OnTabUnselected): TabLayout.OnTabSelectedListener =
+  addOnTabSelectedListener(onUnselected = action)
 
-fun TabLayout.doOnTabSelected(action: OnTabSelected): TabLayout.OnTabSelectedListener {
-  return addOnTabSelectedListener(onSelected = action)
-}
+fun TabLayout.doOnTabSelected(action: OnTabSelected): TabLayout.OnTabSelectedListener =
+  addOnTabSelectedListener(onSelected = action)
