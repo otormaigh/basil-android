@@ -11,10 +11,10 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import ie.pennylabs.x.basil.BasilApplication
 import ie.pennylabs.x.basil.R
 import ie.pennylabs.x.basil.data.store.RecipeStore
-import kotlinx.android.synthetic.main.bottom_sheet_recipe_detail.*
+import kotlinx.android.synthetic.main.bottom_sheet_detail.*
 import javax.inject.Inject
 
-class RecipeDetailBottomSheet : BottomSheetDialogFragment() {
+class DetailBottomSheet : BottomSheetDialogFragment() {
   @Inject
   lateinit var store: RecipeStore
   var recipeId: String = ""
@@ -53,7 +53,7 @@ class RecipeDetailBottomSheet : BottomSheetDialogFragment() {
   }
 
   override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
-    inflater.inflate(R.layout.bottom_sheet_recipe_detail, container, false)
+    inflater.inflate(R.layout.bottom_sheet_detail, container, false)
 
   override fun dismiss() {
     super.dismiss()

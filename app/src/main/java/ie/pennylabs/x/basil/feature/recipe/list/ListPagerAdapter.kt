@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.viewpager.widget.PagerAdapter
 import ie.pennylabs.x.basil.data.model.Recipe
 
-class RecipePagerAdapter(private val recipes: List<Recipe>) : PagerAdapter() {
+class ListPagerAdapter(private val recipes: List<Recipe>) : PagerAdapter() {
   override fun isViewFromObject(view: View, `object`: Any) = view === `object`
   override fun getCount() = recipes.size
   override fun instantiateItem(container: ViewGroup, position: Int): Any {

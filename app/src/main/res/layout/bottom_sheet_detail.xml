@@ -191,7 +191,7 @@
 
   </androidx.constraintlayout.widget.ConstraintLayout>
 
-  <ie.pennylabs.x.basil.feature.recipe.detail.instructions.RecipeInstructionsBottomSheet
+  <ie.pennylabs.x.basil.feature.recipe.detail.instructions.InstructionsBottomSheet
     android:id="@+id/bsRecipeInstructions"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
