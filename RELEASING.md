@@ -7,8 +7,15 @@ When a release branch is ready to be merged into master and in turn deployed to 
 2. Update listing [metadata](../app/src/main/play/en-GB/whatsnew-internal) with what was added to `CHANGELOG.md`
 3. Commit changes `git commit -am '{versionName} release notes'`
 4. Create a PR into master, review, merge and close the old release branch if all is OK
-5. Create a new release branch off latest master `git checkout -b release-{versionName}`
-6. Bump `versionName` in `app/build.gradle` to match new branch name
+
+Prepare the next release branch
+-------------------------------
+5. Checkout master and reset to 'origin/master'
+  * 'git checkout master && git fetch && git reset --hard origin/master'
+6. Bump `versionName` in `app/build.gradle`
+
+NOTE: Steps 7-9 can be run with './gradlew prepareNextRelease'
+7. Create a new release branch `git checkout -b release-{versionName}`
 8. Update previous `CHANGELOG.md` entry to append title with the build commit of that release
 9. Commit changes `git commit -am 'bump version to {versionName}'`
 10. Tag and push

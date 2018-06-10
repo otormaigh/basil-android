@@ -130,3 +130,29 @@ androidExtensions {
 }
 
 check.dependsOn rootProject.detektCheck
+
+task prepareNextRelease {
+  description "Prepares the project for the next release version, see: RELEASING.md"
+
+  doLast {
+    def new_version = project.android.defaultConfig.versionName
+
+    // 7. Create a new release branch `git checkout -b release-{versionName}`
+    exec { commandLine 'git', 'checkout', '-b', "release-$new_version" }
+
+    def stdout = new ByteArrayOutputStream()
+    exec {
+      commandLine 'git', 'rev-parse', '--short', 'HEAD'
+      standardOutput = stdout
+    }
+    exec {
+      def short_hash = stdout.toString().take(7) // make sure there's no unwanted chars
+
+      // 8. Update previous `CHANGELOG.md` entry to append title with the build commit of that release
+      commandLine 'sed', '-i', "", '-e', "1 s/\$/ - $short_hash/", file('../CHANGELOG.md')
+    }
+
+    // 9. Commit changes `git commit -am 'bump version to {versionName}'`
+    exec { commandLine 'git', 'commit', '-am', "bump version to $new_version" }
+  }
+}
