@@ -39,9 +39,9 @@ task wrapper(type: Wrapper) {
 detekt {
   version = "1.0.0.RC7-2"
   defaultProfile {
-    config = file("$project.rootDir/detekt.yml")
-    input = file(project.projectDir)
-    output = "$project.buildDir/reports/detekt"
+    config = file("$rootDir/detekt.yml")
+    input = file(projectDir)
+    output = "$projectDir/app/build/reports/detekt"
     filters = ".*Test.*,.*AndroidTest.*,.*/resources/.*,.*/tmp/.*"
   }
 }
