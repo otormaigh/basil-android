@@ -59,7 +59,12 @@ workflows:
   version: 2
   check_deploy:
     jobs:
-      - check
+      - check:
+         filters:
+           branches:
+             only:
+               - master
+               - /release-.*/
       - deploy:
          requires:
            - check
