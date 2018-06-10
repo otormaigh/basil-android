@@ -1,4 +1,4 @@
-Version 0.1.15 -
+Version 0.1.15 - e5eb932
 ------------------------
  - remove ktlint replace with detekt
  - rename files names to make them more concise

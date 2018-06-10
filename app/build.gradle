@@ -19,7 +19,7 @@ android {
     applicationId "ie.pennylabs.x.basil"
     minSdkVersion 21
     targetSdkVersion 28
-    versionCode 15
+    versionCode 16
     versionName "0.1.$versionCode"
     testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     archivesBaseName = "basil-$versionName"
