@@ -12,12 +12,8 @@ import ie.pennylabs.x.basil.toolbox.extension.expand
 import kotlinx.android.synthetic.main.bottom_sheet_instructions.view.*
 
 class InstructionsBottomSheet : ConstraintLayout {
-  val bottomSheet: BottomSheetBehavior<InstructionsBottomSheet> by lazy { BottomSheetBehavior.from(this) }
+  private val bottomSheet: BottomSheetBehavior<InstructionsBottomSheet> by lazy { BottomSheetBehavior.from(this) }
   var recipeId: String = ""
-    set(value) {
-      pager.adapter = InstructionsPagerAdapter(value)
-      bottomSheet.state = BottomSheetBehavior.STATE_COLLAPSED
-    }
 
   constructor(context: Context) : super(context)
   constructor(context: Context, attrs: AttributeSet) : super(context, attrs)
@@ -25,11 +21,15 @@ class InstructionsBottomSheet : ConstraintLayout {
 
   init {
     LayoutInflater.from(context).inflate(R.layout.bottom_sheet_instructions, this, true)
+  }
 
+  override fun onAttachedToWindow() {
+    super.onAttachedToWindow()
     pager.apply {
-      pagerTabs.setupWithViewPager(this)
       adapter = InstructionsPagerAdapter(recipeId)
+      pagerTabs?.setupWithViewPager(this)
     }
+
     pagerTabs.doOnTabReselected { bottomSheet.expand() }
     pagerTabs.doOnTabSelected { bottomSheet.expand() }
   }

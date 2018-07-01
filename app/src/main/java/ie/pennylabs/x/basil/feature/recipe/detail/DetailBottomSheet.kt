@@ -1,67 +1,36 @@
 package ie.pennylabs.x.basil.feature.recipe.detail
 
-import android.os.Bundle
+import android.content.Context
+import android.util.AttributeSet
 import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import androidx.coordinatorlayout.widget.CoordinatorLayout
-import androidx.fragment.app.FragmentManager
+import androidx.constraintlayout.widget.ConstraintLayout
 import com.google.android.material.bottomsheet.BottomSheetBehavior
-import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-import ie.pennylabs.x.basil.BasilApplication
 import ie.pennylabs.x.basil.R
-import ie.pennylabs.x.basil.data.store.RecipeStore
-import kotlinx.android.synthetic.main.bottom_sheet_detail.*
-import javax.inject.Inject
+import ie.pennylabs.x.basil.data.model.Recipe
+import kotlinx.android.synthetic.main.bottom_sheet_detail.view.*
 
-class DetailBottomSheet : BottomSheetDialogFragment() {
-  @Inject
-  lateinit var store: RecipeStore
-  var recipeId: String = ""
+class DetailBottomSheet : ConstraintLayout {
+  val bottomSheet: BottomSheetBehavior<DetailBottomSheet> by lazy { BottomSheetBehavior.from(this) }
+  var recipe: Recipe? = null
+    set(value) {
+      field = value
+      bsRecipeInstructions.recipeId = value?.id ?: ""
+      tvTitle.text = recipe?.name
+      tvDescription.text = recipe?.description
+      tvValueCalories.text = recipe?.calories
+      tvValueProtein.text = recipe?.protein
+      tvValueFat.text = recipe?.fat
+    }
+
+  constructor(context: Context) : super(context)
+  constructor(context: Context, attrs: AttributeSet) : super(context, attrs)
+  constructor(context: Context, attrs: AttributeSet, defStyleAttr: Int) : super(context, attrs, defStyleAttr)
 
   init {
-    BasilApplication.component.inject(this)
+    LayoutInflater.from(context).inflate(R.layout.bottom_sheet_detail, this, true)
   }
 
-  fun show(manager: FragmentManager?) {
-    super.show(manager, TAG)
-
-    store.fetch(recipeId).observeForever {
-      it?.let { recipe ->
-        tvTitle.text = recipe.name
-        tvDescription.text = recipe.description
-        tvValueCalories.text = recipe.calories
-        tvValueProtein.text = recipe.protein
-        tvValueFat.text = recipe.fat
-
-        bsRecipeInstructions.recipeId = recipeId
-      }
-    }
-  }
-
-  override fun onStart() {
-    super.onStart()
-    dialog.findViewById<View>(R.id.design_bottom_sheet)?.let { bs ->
-      bs.layoutParams.height = ViewGroup.LayoutParams.MATCH_PARENT
-    }
-
-    view?.post {
-      val params = (view?.parent as View).layoutParams as CoordinatorLayout.LayoutParams
-      val bottomSheetBehavior = params.behavior as BottomSheetBehavior<*>?
-      bottomSheetBehavior?.peekHeight = view?.measuredHeight ?: 0
-    }
-  }
-
-  override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
-    inflater.inflate(R.layout.bottom_sheet_detail, container, false)
-
-  override fun dismiss() {
-    super.dismiss()
-
-    store.fetch(recipeId).removeObservers(this)
-  }
-
-  companion object {
-    const val TAG = "bottom_sheet_recipe_detail"
+  fun setPeekHeight(peekHeight: Int) {
+    bottomSheet.peekHeight = peekHeight
   }
 }
