@@ -97,7 +97,7 @@ dependencies {
   implementation "org.jetbrains.kotlinx:kotlinx-coroutines-reactive:${Deps.coroutines}"
 
   implementation 'com.google.android.material:material:1.0.0-alpha1'
-  implementation 'androidx.constraintlayout:constraintlayout:1.1.0'
+  implementation 'androidx.constraintlayout:constraintlayout:1.1.2'
   implementation "androidx.lifecycle:lifecycle-livedata:2.0.0-alpha1"
   implementation "androidx.room:room-runtime:$Deps.room"
   kapt "androidx.room:room-compiler:$Deps.room"

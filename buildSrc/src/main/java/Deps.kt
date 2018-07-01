@@ -1,9 +1,9 @@
 object Deps {
   // org.jetbrains.kotlin
-  const val kotlin = "1.2.41"
+  const val kotlin = "1.2.50"
 
   // org.jetbrains.kotlinx:kotlinx-coroutines
-  const val coroutines = "0.22.5"
+  const val coroutines = "0.23.3"
 
   // androidx.test
   const val androidx_test = "1.1.0-alpha3"
