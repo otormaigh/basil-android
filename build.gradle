@@ -1,3 +1,5 @@
+import basil.*
+
 buildscript {
   repositories {
     google()
@@ -40,7 +42,7 @@ detekt {
   version = "1.0.0.RC7-2"
   defaultProfile {
     config = file("$rootDir/detekt.yml")
-    input = file(projectDir)
+    input = file("$projectDir/app")
     output = "$projectDir/app/build/reports/detekt"
     filters = ".*Test.*,.*AndroidTest.*,.*/resources/.*,.*/tmp/.*"
   }
