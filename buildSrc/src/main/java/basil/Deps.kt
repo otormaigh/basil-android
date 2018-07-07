@@ -11,7 +11,7 @@ object Deps {
   const val androidx_test = "1.1.0-alpha3"
 
   // androidx.room
-  const val room = "2.0.0-alpha1"
+  const val room = "2.0.0-beta01"
 
   // com.google.dagger
   const val dagger = "2.16"
