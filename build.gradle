@@ -9,7 +9,7 @@ buildscript {
     maven { url "https://oss.sonatype.org/content/repositories/snapshots" }
   }
   dependencies {
-    classpath 'com.android.tools.build:gradle:3.3.0-alpha01'
+    classpath 'com.android.tools.build:gradle:3.3.0-alpha02'
     classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$Deps.kotlin"
     classpath "com.jaredsburrows:gradle-spoon-plugin:1.4.1-SNAPSHOT"
     classpath 'com.github.triplet.gradle:play-publisher:1.2.2'

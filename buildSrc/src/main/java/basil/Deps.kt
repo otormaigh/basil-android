@@ -2,10 +2,10 @@ package basil
 
 object Deps {
   // org.jetbrains.kotlin
-  const val kotlin = "1.2.50"
+  const val kotlin = "1.2.51"
 
   // org.jetbrains.kotlinx:kotlinx-coroutines
-  const val coroutines = "0.23.3"
+  const val coroutines = "0.23.4"
 
   // androidx.test
   const val androidx_test = "1.1.0-alpha3"
