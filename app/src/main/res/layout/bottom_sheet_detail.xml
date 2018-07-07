@@ -55,15 +55,16 @@
 
     <TextView
       android:id="@+id/tvTitleCalories"
-      android:layout_width="wrap_content"
+      android:layout_width="0dp"
       android:layout_height="wrap_content"
       android:alpha="0"
       android:fontFamily="@font/lekton"
       android:text="Calories"
+      android:textAlignment="center"
       android:textAppearance="@style/TextAppearance.AppCompat.Title"
       app:layout_constraintEnd_toStartOf="@id/tvTitleProtein"
       app:layout_constraintHorizontal_chainStyle="spread"
-      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintStart_toStartOf="@id/vItemBackground"
       app:layout_constraintTop_toTopOf="@id/tvTitleProtein"
       tools:alpha="1" />
 
@@ -93,12 +94,13 @@
 
     <TextView
       android:id="@+id/tvTitleProtein"
-      android:layout_width="wrap_content"
+      android:layout_width="0dp"
       android:layout_height="wrap_content"
       android:layout_marginTop="@dimen/vertical_margin"
       android:alpha="0"
       android:fontFamily="@font/lekton"
       android:text="Protein"
+      android:textAlignment="center"
       android:textAppearance="@style/TextAppearance.AppCompat.Title"
       app:layout_constraintEnd_toStartOf="@id/tvTitleFat"
       app:layout_constraintStart_toEndOf="@id/tvTitleCalories"
@@ -131,13 +133,14 @@
 
     <TextView
       android:id="@+id/tvTitleFat"
-      android:layout_width="wrap_content"
+      android:layout_width="0dp"
       android:layout_height="wrap_content"
       android:alpha="0"
       android:fontFamily="@font/lekton"
       android:text="Fat"
+      android:textAlignment="center"
       android:textAppearance="@style/TextAppearance.AppCompat.Title"
-      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintEnd_toEndOf="@id/vItemBackground"
       app:layout_constraintStart_toEndOf="@id/tvTitleProtein"
       app:layout_constraintTop_toTopOf="@id/tvTitleProtein"
       tools:alpha="1" />

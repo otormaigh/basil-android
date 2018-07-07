@@ -13,17 +13,16 @@ import kotlinx.coroutines.experimental.launch
 
 @SuppressLint("ViewConstructor")
 class RecipePage(context: Context,
-                 private val recipe: Recipe,
-                 private val imagePaddingTop: Int) : CoordinatorLayout(context) {
+                 imagePaddingTop: Int,
+                 private val recipe: Recipe) : CoordinatorLayout(context) {
 
   init {
     LayoutInflater.from(context).inflate(R.layout.page_recipe, this, true)
 
-    ivImage.updatePadding(top = imagePaddingTop)
-
     launch(UI) {
+      ivImage.updatePadding(top = imagePaddingTop + resources.getDimension(R.dimen.vertical_margin).toInt())
       recipeDetailBottomSheet.recipe = recipe
-      recipeDetailBottomSheet.setPeekHeight(ivImage.bottom - imagePaddingTop)
+      recipeDetailBottomSheet.setPeekHeight(ivImage.bottom - ivImage.paddingTop)
     }
   }
 }

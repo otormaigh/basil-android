@@ -9,7 +9,7 @@ class ListPagerAdapter(private val recipes: List<Recipe>, private val imagePaddi
   override fun isViewFromObject(view: View, `object`: Any) = view === `object`
   override fun getCount() = recipes.size
   override fun instantiateItem(container: ViewGroup, position: Int): Any {
-    val page = RecipePage(container.context, recipes[position], imagePaddingTop)
+    val page = RecipePage(container.context, imagePaddingTop, recipes[position])
     container.addView(page)
     return page
   }
