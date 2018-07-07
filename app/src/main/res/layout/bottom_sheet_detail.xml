@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
   xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
   android:layout_width="match_parent"
   android:layout_height="match_parent">
 
@@ -22,25 +23,16 @@
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toTopOf="@id/tvTitle" />
 
-    <View
-      android:layout_width="0dp"
-      android:layout_height="1dp"
-      android:background="@color/primary_500"
-      app:layout_constraintBottom_toTopOf="@id/tvDescription"
-      app:layout_constraintEnd_toEndOf="@id/vItemBackground"
-      app:layout_constraintStart_toStartOf="@id/vItemBackground"
-      app:layout_constraintTop_toBottomOf="@id/tvTitle" />
-
     <TextView
       android:id="@+id/tvTitle"
       style="@style/Title.Recipe"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:layout_marginTop="@dimen/vertical_margin_double"
-      android:text="Creamy Pesto Pasta"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toTopOf="parent" />
+      app:layout_constraintTop_toTopOf="parent"
+      tools:text="Creamy Pesto Pasta" />
 
     <TextView
       android:id="@+id/tvDescription"
@@ -49,110 +41,130 @@
       android:layout_marginStart="@dimen/horizontal_margin_tri"
       android:layout_marginTop="@dimen/vertical_margin_double"
       android:layout_marginEnd="@dimen/horizontal_margin_tri"
+      android:alpha="0"
       android:fontFamily="@font/lekton_bold"
       android:lineSpacingExtra="8dp"
       android:paddingBottom="@dimen/vertical_margin"
-      android:text="Guilt-free gluten-free spaghetti pasta is sautéed in a garilc, kale pesto. It\'s an easy and healthy dinner."
       android:textAlignment="center"
       android:textAppearance="@style/TextAppearance.AppCompat.Headline"
       app:layout_constraintEnd_toEndOf="@id/vItemBackground"
       app:layout_constraintStart_toStartOf="@id/vItemBackground"
-      app:layout_constraintTop_toBottomOf="@id/tvTitle" />
+      app:layout_constraintTop_toBottomOf="@id/tvTitle"
+      tools:alpha="1"
+      tools:text="Guilt-free gluten-free spaghetti pasta is sautéed in a garilc, kale pesto. It\'s an easy and healthy dinner." />
 
     <TextView
       android:id="@+id/tvTitleCalories"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
+      android:alpha="0"
       android:fontFamily="@font/lekton"
       android:text="Calories"
       android:textAppearance="@style/TextAppearance.AppCompat.Title"
       app:layout_constraintEnd_toStartOf="@id/tvTitleProtein"
       app:layout_constraintHorizontal_chainStyle="spread"
       app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toTopOf="@id/tvTitleProtein" />
+      app:layout_constraintTop_toTopOf="@id/tvTitleProtein"
+      tools:alpha="1" />
 
     <TextView
       android:id="@+id/tvValueCalories"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
+      android:alpha="0"
       android:fontFamily="@font/lekton_bold"
       android:text="456g"
       android:textAppearance="@style/TextAppearance.AppCompat.Title"
       app:layout_constraintEnd_toEndOf="@id/tvTitleCalories"
       app:layout_constraintStart_toStartOf="@id/tvTitleCalories"
-      app:layout_constraintTop_toBottomOf="@id/tvTitleCalories" />
+      app:layout_constraintTop_toBottomOf="@id/tvTitleCalories"
+      tools:alpha="1" />
 
     <View
+      android:id="@+id/dividerProteinStart"
+      style="@style/Divider"
       android:layout_width="1dp"
-      android:layout_height="0dp"
-      android:background="@color/primary_500"
+      android:alpha="0"
       app:layout_constraintBottom_toBottomOf="@id/tvValueProtein"
       app:layout_constraintEnd_toStartOf="@id/tvTitleProtein"
       app:layout_constraintStart_toEndOf="@id/tvTitleCalories"
-      app:layout_constraintTop_toTopOf="@id/tvTitleProtein" />
+      app:layout_constraintTop_toTopOf="@id/tvTitleProtein"
+      tools:alpha="1" />
 
     <TextView
       android:id="@+id/tvTitleProtein"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:layout_marginTop="@dimen/vertical_margin"
+      android:alpha="0"
       android:fontFamily="@font/lekton"
       android:text="Protein"
       android:textAppearance="@style/TextAppearance.AppCompat.Title"
       app:layout_constraintEnd_toStartOf="@id/tvTitleFat"
       app:layout_constraintStart_toEndOf="@id/tvTitleCalories"
-      app:layout_constraintTop_toBottomOf="@+id/tvDescription" />
+      app:layout_constraintTop_toBottomOf="@+id/tvDescription"
+      tools:alpha="1" />
 
     <TextView
       android:id="@+id/tvValueProtein"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
+      android:alpha="0"
       android:fontFamily="@font/lekton_bold"
       android:text="27g"
       android:textAppearance="@style/TextAppearance.AppCompat.Title"
       app:layout_constraintEnd_toEndOf="@id/tvTitleProtein"
       app:layout_constraintStart_toStartOf="@id/tvTitleProtein"
-      app:layout_constraintTop_toBottomOf="@id/tvTitleProtein" />
+      app:layout_constraintTop_toBottomOf="@id/tvTitleProtein"
+      tools:alpha="1" />
 
     <View
+      android:id="@+id/dividerProteinEnd"
+      style="@style/Divider"
       android:layout_width="1dp"
-      android:layout_height="0dp"
-      android:background="@color/primary_500"
+      android:alpha="0"
       app:layout_constraintBottom_toBottomOf="@id/tvValueProtein"
       app:layout_constraintEnd_toStartOf="@id/tvTitleFat"
       app:layout_constraintStart_toEndOf="@id/tvTitleProtein"
-      app:layout_constraintTop_toTopOf="@id/tvTitleProtein" />
+      app:layout_constraintTop_toTopOf="@id/tvTitleProtein"
+      tools:alpha="1" />
 
     <TextView
       android:id="@+id/tvTitleFat"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
+      android:alpha="0"
       android:fontFamily="@font/lekton"
       android:text="Fat"
       android:textAppearance="@style/TextAppearance.AppCompat.Title"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintStart_toEndOf="@id/tvTitleProtein"
-      app:layout_constraintTop_toTopOf="@id/tvTitleProtein" />
+      app:layout_constraintTop_toTopOf="@id/tvTitleProtein"
+      tools:alpha="1" />
 
     <TextView
       android:id="@+id/tvValueFat"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
+      android:alpha="0"
       android:fontFamily="@font/lekton_bold"
       android:text="12g"
       android:textAppearance="@style/TextAppearance.AppCompat.Title"
       app:layout_constraintEnd_toEndOf="@id/tvTitleFat"
       app:layout_constraintStart_toStartOf="@id/tvTitleFat"
-      app:layout_constraintTop_toBottomOf="@id/tvTitleFat" />
+      app:layout_constraintTop_toBottomOf="@id/tvTitleFat"
+      tools:alpha="1" />
 
     <View
-      android:layout_width="0dp"
+      android:id="@+id/dividerProteinBottom"
+      style="@style/Divider"
       android:layout_height="1dp"
-      android:background="@color/primary_500"
+      android:alpha="0"
       app:layout_constraintBottom_toTopOf="@id/tvGluten"
       app:layout_constraintEnd_toEndOf="@id/vItemBackground"
       app:layout_constraintStart_toStartOf="@id/vItemBackground"
-      app:layout_constraintTop_toBottomOf="@id/tvValueProtein" />
+      app:layout_constraintTop_toBottomOf="@id/tvValueProtein"
+      tools:alpha="1" />
 
     <TextView
       android:id="@+id/tvGluten"
@@ -161,6 +173,7 @@
       android:layout_marginTop="@dimen/vertical_margin_tri"
       android:layout_marginEnd="@dimen/horizontal_margin"
       android:layout_marginBottom="@dimen/vertical_margin_tri"
+      android:alpha="0"
       android:drawableStart="@drawable/ic_block"
       android:drawablePadding="@dimen/horizontal_margin"
       android:fontFamily="@font/lekton_bold"
@@ -170,13 +183,15 @@
       app:layout_constraintEnd_toStartOf="@id/tvEgg"
       app:layout_constraintHorizontal_chainStyle="packed"
       app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toBottomOf="@id/tvValueProtein" />
+      app:layout_constraintTop_toBottomOf="@id/tvValueProtein"
+      tools:alpha="1" />
 
     <TextView
       android:id="@+id/tvEgg"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:layout_marginStart="@dimen/horizontal_margin"
+      android:alpha="0"
       android:drawableStart="@drawable/ic_block"
       android:drawablePadding="@dimen/horizontal_margin"
       android:fontFamily="@font/lekton_bold"
@@ -186,7 +201,8 @@
       app:layout_constraintBottom_toBottomOf="@id/tvGluten"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintStart_toEndOf="@id/tvGluten"
-      app:layout_constraintTop_toTopOf="@id/tvGluten" />
+      app:layout_constraintTop_toTopOf="@id/tvGluten"
+      tools:alpha="1" />
 
   </androidx.constraintlayout.widget.ConstraintLayout>
 

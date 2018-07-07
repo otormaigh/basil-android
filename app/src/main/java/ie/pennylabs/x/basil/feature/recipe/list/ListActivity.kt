@@ -17,6 +17,10 @@ class ListActivity : BaseActivity() {
     AndroidInjection.inject(this)
     super.onCreate(savedInstanceState)
     setContentView(R.layout.activity_list)
+  }
+
+  override fun onResume() {
+    super.onResume()
 
     store.fetchAll().observe(this@ListActivity, Observer { recipes ->
       if (recipes != null) {
