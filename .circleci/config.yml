@@ -47,7 +47,7 @@ jobs:
           command: bash enc/decrypt.sh
       - run:
           name: Publish APK
-          command: ./gradlew publishApkRelease
+          command: ./gradlew publishRelease
       - run:
           name: Cleanup
           command: bash enc/encrypt.sh

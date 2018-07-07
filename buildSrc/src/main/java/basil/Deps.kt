@@ -2,7 +2,7 @@ package basil
 
 object Deps {
   // org.jetbrains.kotlin
-  const val kotlin = "1.2.51"
+  const val kotlin = "1.2.61"
 
   // org.jetbrains.kotlinx:kotlinx-coroutines
   const val coroutines = "0.23.4"
@@ -11,7 +11,7 @@ object Deps {
   const val androidx_test = "1.1.0-alpha3"
 
   // androidx.room
-  const val room = "2.0.0-beta01"
+  const val room = "2.0.0-rc01"
 
   // com.google.dagger
   const val dagger = "2.16"

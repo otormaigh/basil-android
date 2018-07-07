@@ -5,14 +5,15 @@ buildscript {
     google()
     jcenter()
 
+    maven { url 'https://jitpack.io' }
     maven { url "https://oss.jfrog.org/artifactory/oss-snapshot-local/" }
     maven { url "https://oss.sonatype.org/content/repositories/snapshots" }
   }
   dependencies {
-    classpath 'com.android.tools.build:gradle:3.3.0-alpha02'
+    classpath 'com.android.tools.build:gradle:3.3.0-alpha08'
     classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$Deps.kotlin"
     classpath "com.jaredsburrows:gradle-spoon-plugin:1.4.1-SNAPSHOT"
-    classpath 'com.github.triplet.gradle:play-publisher:1.2.2'
+    classpath 'com.github.Triple-T:gradle-play-publisher:401614a'
   }
 }
 
@@ -33,8 +34,8 @@ task clean(type: Delete) {
   delete rootProject.buildDir
 }
 
-task wrapper(type: Wrapper) {
-  gradleVersion = "4.8.1"
+wrapper {
+  gradleVersion = "4.9"
   distributionType = "all"
 }
 

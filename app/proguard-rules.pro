@@ -20,8 +20,6 @@
 -keepattributes SourceFile,LineNumberTable
 -keep public class * extends java.lang.Exception%
 
--keepnames class com.google.android.material.theme.** { *; }
-
 # https://github.com/Kotlin/kotlinx.coroutines
 -keepclassmembernames class kotlinx.** {
     volatile <fields>;
