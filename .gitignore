@@ -16,3 +16,5 @@ build
 
 signing/release.keystore
 signing/play.json
+
+**/KeyStore.kt
